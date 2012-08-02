@@ -14,6 +14,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import cn.fyg.bp.application.ActivitiService;
+import cn.fyg.bp.application.MessageService;
+import cn.fyg.bp.domain.model.messagetest.Message;
 
 @Service
 public class ActivitiServiceImpl implements ActivitiService {
@@ -22,7 +24,8 @@ public class ActivitiServiceImpl implements ActivitiService {
 	RepositoryService repositoryService;
 	@Resource
 	RuntimeService runtimeService;
-
+	@Resource
+	MessageService messageService;
 	
 	@Override
 	@Transactional
@@ -47,6 +50,8 @@ public class ActivitiServiceImpl implements ActivitiService {
 	@Override
 	@Transactional
 	public ProcessInstance startProcess(String processDefinitionId){
+		Message message = new Message().id(1L).context(String.format("processDefinitionId:%s startProcess", processDefinitionId));
+		messageService.add(message);
 		return runtimeService.startProcessInstanceById(processDefinitionId);
 	}
 
