@@ -1,11 +1,12 @@
 package cn.fyg.bp.domain.model.messagetest;
 
+import org.springframework.data.repository.Repository;
 
-public interface MessageRepository  {
+
+public interface MessageRepository extends Repository<Message, Long>,MessageRepositoryPlus {
 	
-	Message find(Long id);
+	Message save(Message message);
 
-	Message update(Message message);
-
-	Message persist(Message message);
+	Message findById(Long id);
+	
 }

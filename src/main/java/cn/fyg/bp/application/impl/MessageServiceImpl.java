@@ -19,14 +19,9 @@ public class MessageServiceImpl implements MessageService {
 
 	@Override
 	@Transactional
-	public Message add(Message message) {
-		return this.messageRepository.persist(message);
+	public Message save(Message message) {
+		return this.messageRepository.save(message);
 	}
 
-	@Override
-	@Transactional
-	public Message update(Message message) {
-		return this.messageRepository.update(message);
-	}
 
 }

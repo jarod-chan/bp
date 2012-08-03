@@ -1,7 +1,6 @@
 package cn.fyg.bp.service;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
 
 import javax.annotation.Resource;
 
@@ -28,25 +27,21 @@ public class MessageTest {
 		long id = 100L;
 		Message message=new Message();
 		message.id(id).context("it is test class");
-		messageService.add(message);
+		messageService.save(message);
 		
-		Message returnMessage=messageRepository.find(id);
+		Message returnMessage=messageRepository.testPlus(id);
 		assertEquals("it is test class", returnMessage.context());
 			
 	}
 	
 	@Test
-	public void testSaveError(){
+	public void testUpdate(){
 		long id = 101L;
 		Message message1=new Message().id(id).context("it is message1");
-		messageService.add(message1);
+		messageService.save(message1);
 		
-		try{
-			Message message2=new Message().id(id).context("it is message2");
-			messageService.add(message2);
-		}catch(Exception e){
-			assertNotNull(e);
-		}
+		Message message2=new Message().id(id).context("it is message2");
+		messageService.save(message2);
 		
 
 	}

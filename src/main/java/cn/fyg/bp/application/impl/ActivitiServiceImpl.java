@@ -50,8 +50,8 @@ public class ActivitiServiceImpl implements ActivitiService {
 	@Override
 	@Transactional
 	public ProcessInstance startProcess(String processDefinitionId){
-		Message message = new Message().id(1L).context(String.format("processDefinitionId:%s startProcess", processDefinitionId));
-		messageService.add(message);
+		Message message = new Message().id(2l).context(String.format("processDefinitionId:%s startProcess", processDefinitionId));
+		messageService.save(message);
 		return runtimeService.startProcessInstanceById(processDefinitionId);
 	}
 
