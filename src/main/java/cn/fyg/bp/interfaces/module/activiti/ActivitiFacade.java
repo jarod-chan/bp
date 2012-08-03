@@ -26,6 +26,8 @@ public class ActivitiFacade {
 	ActivitiService activitiService;
 	@Resource
 	RepositoryService repositoryService;
+	
+	
 
 	public List<FileBean> getFileList() {
 		String path =this.getProcessFilePath();
