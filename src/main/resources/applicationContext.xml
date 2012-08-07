@@ -13,5 +13,6 @@
 	<context:component-scan base-package="cn.fyg.bp.infrastructure" />
 	<context:component-scan base-package="cn.fyg.bp.domain" />
 	<context:component-scan base-package="cn.fyg.bp.application" />
+	<context:component-scan base-package="cn.fyg.module.user" />
 
 </beans>

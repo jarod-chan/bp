@@ -288,6 +288,20 @@
 		<type>jar</type>
 		<scope>compile</scope>
 	</dependency>
+	<dependency>
+		<groupId>jetty</groupId>
+		<artifactId>servlet-api</artifactId>
+		<version>2.5-6.0.2</version>
+		<type>jar</type>
+		<scope>provided</scope>
+	</dependency>
+	<dependency>
+		<groupId>jetty</groupId>
+		<artifactId>jsp-api</artifactId>
+		<version>2.1-6.0.2</version>
+		<type>jar</type>
+		<scope>provided</scope>
+	</dependency>
 	</dependencies>
 	
 	
