@@ -11,7 +11,6 @@
 		}
 	</script>
 	<%@ include file="/common/meta.jsp" %>
-    <title>Activiti-演示系统</title>
     <%@ include file="/common/include-base-styles.jsp" %>
 	<%@ include file="/common/include-jquery-ui-theme.jsp" %>
     <link rel="stylesheet" type="text/css" href="${ctx }/css/menu.css" />
@@ -48,7 +47,7 @@
        				<div style="float:right; color: #fff;font-size: 12px;margin-top: 2px">
 		        		<div>
 		        			<label for="username">欢迎：</label>
-		        			<span title="角色：${groupNames }">${user.firstName } ${user.lastName }/${user.id }</span>
+		        			<span title="角色：${groupNames }">${user.realname }/${user.username }</span>
 		        		</div>
 		        		<div style="text-align: right;">
 		        			<a id="chang-theme" href="#">切换风格</a>
@@ -66,7 +65,7 @@
 	<div id="tabs">
 		<ul><li><a class="tabs-title" href="#tab-index">首页</a><span class='ui-icon ui-icon-close' title='关闭标签页'></span></li></ul>
 		<div id="tab-index">
-			<iframe id="mainIframe" name="mainIframe" src="welcome" class="module-iframe" scrolling="auto" frameborder="0" style="width:100%;height:100%;"></iframe>
+			<iframe id="mainIframe" name="mainIframe" src="first" class="module-iframe" scrolling="auto" frameborder="0" style="width:100%;height:100%;"></iframe>
 		</div>
 	</div>
 </div>
@@ -74,8 +73,7 @@
 <!-- #BottomPane -->
 <div id="bottomPane" class="ui-layout-south ui-widget ui-widget-content">
 	<div class="footer ui-state-default">
-		<a href="http://www.kafeitu.me" target="_blank">咖啡兔</a>
-		<span class="copyright">©2008-2012</span>
+				&nbsp;
 	</div>
 </div>
 <%@ include file="menu.jsp" %>

@@ -34,12 +34,12 @@ public class LoginCtl {
 	SessionUtil sessionUtil;
 	
 	@RequestMapping(value = "", method = RequestMethod.GET)
-	public String getLogin() {
+	public String toLogin() {
 		return Page.LOGIN;
 	}
 	
 	@RequestMapping(value = "", method = RequestMethod.POST)
-	public String postLogin(LoginBean loginBean,RedirectAttributes redirectAttributes) {
+	public String login(LoginBean loginBean,RedirectAttributes redirectAttributes) {
 		String userId=null;
 		try{
 			userId=userService.login(loginBean.getUsername(), loginBean.getPassword());
@@ -52,7 +52,7 @@ public class LoginCtl {
 			return "redirect:/login";
 		}
 		initLoginState(userId);
-		return "redirect:/activiti";
+		return "redirect:/index";
 	}
 
 	private void initLoginState(String userId) {

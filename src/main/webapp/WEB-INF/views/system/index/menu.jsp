@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <ul id="css3menu">
-	<li class="topfirst"><a rel="main/welcome">首页</a></li>
+	<li class="topfirst"><a rel="first">首页</a></li>
 	<li>
 		<a rel="#">请假（自定义表单）</a>
 		<ul>
