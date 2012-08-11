@@ -33,13 +33,13 @@
 		<form action="${ctx}/login" method="post">
 			<div>
 				<div class="context">
-					<span style="vertical-align: middle">用户：</span><input type="text" name="username"  value="${loginBean.username}"  style="width:150px;"/> 
+					<span style="vertical-align: middle">用户：</span><input type="text" name="username"  value="${loginBean.username}chen"  style="width:150px;"/> 
 				</div>
 				<div class="context">
-					<span style="vertical-align: middle">密码：</span><input type="password" name="password" value=""   style="width:150px;"/>
+					<span style="vertical-align: middle">密码：</span><input type="password" name="password" value="1"   style="width:150px;"/>
 				</div>
 				<div class="context"  style="height: 20px;padding: 5px 0px; ">
-				<c:if test="${message!=null}" >
+				<c:if test="${not empty message}" >
 					<div id="message" class="ui-state-error ui-corner-all" style="width: 200px;">
 						<p><span class="ui-icon ui-icon-alert" style=" float: left;margin-right:.3em;"></span><span style="float: left;">${message}</span></p>
 					</div>

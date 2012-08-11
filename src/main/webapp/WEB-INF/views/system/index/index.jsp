@@ -35,13 +35,10 @@
 <!-- #TopPane -->
 <div id="topPane" class="ui-layout-north ui-widget ui-widget-header ui-widget-content">
 	<div style="padding-left:5px; font-size: 16px; margin-top: 1px;">
-       	<table id="topTable" style="padding: 0px;margin: 0px;margin-top: -5px" width="100%">
+       	<table id="topTable" style="padding: 0px;margin: 0px;margin-top: -5px;padding-top: 8px;" width="100%">
        		<tr>
-       			<td width="40px">
-       				<img src="${ctx }/images/logo.png" height="48" align="top"  style="margin-top:5px" />
-       			</td>
        			<td>
-       				<span style="font-size: 17px;color:#FFFF33">Activiti<br/>演示系统</span><br/>
+       				<span style="font-size: 30px;color:#FFFF33;padding-top: 10px;">方远房产流程系统</span>
        			</td>
        			<td>
        				<div style="float:right; color: #fff;font-size: 12px;margin-top: 2px">

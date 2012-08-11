@@ -3,7 +3,7 @@ package cn.fyg.bp.infrastructure.message.imp;
 import javax.servlet.http.HttpSession;
 
 import cn.fyg.bp.infrastructure.message.MessagePasser;
-import cn.fyg.bp.interfaces.module.shared.tool.Constant;
+import cn.fyg.bp.interfaces.web.shared.tool.Constant;
 
 public class SessionMPR implements MessagePasser {
 	
