@@ -25,6 +25,12 @@
  		 	.appendTo($("body"))
  		 	.submit();
     	});
+    	$('.btn_start').button().click(function(){
+    		var param=jQuery.parseJSON($(this).attr("param"));
+    		$('<form/>',{action:'${ctx}/workflow/manage/process/'+param.processDefinitionId+'/start',method:'post'})
+ 		 	.appendTo($("body"))
+ 		 	.submit();
+    	});
     });
     </script>
 </head>
@@ -55,7 +61,10 @@
 					<td>${process.version }</td>
 					<td><a target="_blank" href='${ctx }/workflow/manage/${process.deploymentId}/resource?resourceName=${process.resourceName }'>${process.resourceName }</a></td>
 					<td><a target="_blank" href='${ctx }/workflow/manage/${process.deploymentId}/resource?resourceName=${process.diagramResourceName }'>${process.diagramResourceName }</a></td>
-					<td><button class="btn_delete" param='{"deploymentId":"${process.deploymentId}"}' >删除</button></td>
+					<td>
+						<button class="btn_delete" param='{"deploymentId":"${process.deploymentId}"}' >删除</button>
+						<button class="btn_start" param='{"processDefinitionId":"${process.id }"}' >启动</button>
+					</td>
 				</tr>
 			</c:forEach>
 		</tbody>

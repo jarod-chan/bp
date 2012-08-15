@@ -1,7 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <ul id="css3menu">
 	<li class="topfirst"><a rel="first">首页</a></li>
-	<li class="topfirst"><a rel="first">任务中心</a></li>
+	<li>
+		<a rel="#">工作台</a>
+		<ul>
+			<li><a rel='process/execute'>任务执行</a></li>
+			<li><a rel='process/running'>流程状态</a></li>
+		</ul>
+	</li>
 	<li>
 		<a rel="#">工作流</a>
 		<ul>

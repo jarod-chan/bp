@@ -6,7 +6,9 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletResponse;
 
+import org.activiti.engine.ActivitiException;
 import org.activiti.engine.RepositoryService;
+import org.activiti.engine.RuntimeService;
 import org.activiti.engine.repository.ProcessDefinition;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -28,6 +30,8 @@ public class ManageCtl {
 	public static final Logger logger=LoggerFactory.getLogger(ManageCtl.class);
 	@Autowired
 	RepositoryService repositoryService;
+	@Autowired
+	RuntimeService runtimeService;
 	
 	private static final String PATH = "workflow/manage/";
 	private interface Page {
@@ -57,6 +61,19 @@ public class ManageCtl {
 		while ((len = resourceAsStream.read(b, 0, 1024)) != -1) {
 			response.getOutputStream().write(b, 0, len);
 		}
+	}
+	
+	@RequestMapping(value = "/process/{processDefinitionId}/start", method = RequestMethod.POST)
+	public String start(@PathVariable("processDefinitionId") String processDefinitionId,RedirectAttributes redirectAttributes){
+		try {			
+			runtimeService.startProcessInstanceById(processDefinitionId);
+		} catch (ActivitiException e) {
+			logger.error("process start fail by id:[]", processDefinitionId);
+			redirectAttributes.addFlashAttribute(Constant.MESSAGE_NAME, Message.create().Error().message("流程[%s]启动失败！",processDefinitionId));
+			return "redirect:/workflow/manage";
+		}
+		redirectAttributes.addFlashAttribute(Constant.MESSAGE_NAME, Message.create().info().message("流程[%s]启动。",processDefinitionId));
+		return "redirect:/workflow/manage";
 	}
 
 }
