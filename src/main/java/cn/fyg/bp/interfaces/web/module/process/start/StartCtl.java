@@ -5,9 +5,7 @@ import java.util.Map;
 
 import org.activiti.engine.ActivitiException;
 import org.activiti.engine.IdentityService;
-import org.activiti.engine.RepositoryService;
 import org.activiti.engine.RuntimeService;
-import org.activiti.engine.repository.ProcessDefinition;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,7 +32,7 @@ public class StartCtl {
 	}
 	
 	@Autowired
-	RepositoryService repositoryService;
+	StartFacade startFacade;
 	@Autowired
 	RuntimeService runtimeService;
 	@Autowired
@@ -44,8 +42,8 @@ public class StartCtl {
 	
 	@RequestMapping(value = "", method = RequestMethod.GET)
 	public String toList(Map<String,Object> map){
-		List<ProcessDefinition> processDefinitions = repositoryService.createProcessDefinitionQuery().latestVersion().list();
-		map.put("processDefinitions", processDefinitions);
+		List<ProcessDefinitionBean> processDefinitionBeans=startFacade.getProcessDefinitionBean();
+		map.put("processDefinitionBeans", processDefinitionBeans);
 		return Page.LIST;
 	}
 	

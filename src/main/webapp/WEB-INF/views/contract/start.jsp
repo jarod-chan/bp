@@ -15,21 +15,14 @@
     <script src="${ctx }/js/common/plugins/jui/jquery-ui.min.js" type="text/javascript"></script>
 
     <script type="text/javascript">
-    $(function() {
-    	
+    $(function() {	
 		$("button").button();
-		$("#btn_save").click(function(){
-			var actionFrom=$("form");
-			var oldAction=actionFrom.attr("action");
-			actionFrom.attr("action",oldAction+"/save").submit();
-		});
 		$("#btn_commit").click(function(){
 			var actionFrom=$("form");
-			var oldAction=actionFrom.attr("action");
-			actionFrom.attr("action",oldAction+"/commit").submit();
+			actionFrom.submit();
 		});
 		$("#btn_back").click(function(){
-			window.open('${ctx}/process/execute','_self');
+			window.open('${ctx}/process/start','_self');
 			return false;
 		});
     });
@@ -41,9 +34,9 @@
 	<c:if test="${not empty message}">
 		<div id="message" class="${message.level}">${message.message}</div>
 	</c:if>
-		<form action="${ctx}/contract" method="post">
+		<form action="${ctx}/contract/start" method="post">
 		<input type="hidden" name="id" value="${contract.id}"/>
-		<input type="hidden" name="taskId" value="${taskId}"/>
+		<input type="hidden" name="processDefinitionKey" value="${processDefinitionKey}"/>
 		<fieldset>
 			<legend>合同办理</legend>
 			<table border="1">
@@ -62,7 +55,6 @@
 			<tr>
 				<td>&nbsp;</td>
 				<td>
-					<button id="btn_save">保存</button>
 					<button id="btn_commit">提交</button>
 					<button id="btn_back">返回</button>
 				</td>

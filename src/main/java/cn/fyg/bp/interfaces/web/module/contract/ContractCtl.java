@@ -3,6 +3,7 @@ package cn.fyg.bp.interfaces.web.module.contract;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.activiti.engine.IdentityService;
 import org.activiti.engine.RuntimeService;
 import org.activiti.engine.TaskService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +18,9 @@ import cn.fyg.bp.application.ContractService;
 import cn.fyg.bp.domain.model.contract.Contract;
 import cn.fyg.bp.domain.model.contract.ContractFactory;
 import cn.fyg.bp.interfaces.web.shared.message.Message;
+import cn.fyg.bp.interfaces.web.shared.session.SessionUtil;
 import cn.fyg.bp.interfaces.web.shared.tool.Constant;
+import cn.fyg.module.user.User;
 
 @Controller
 @RequestMapping("/contract")
@@ -27,6 +30,7 @@ public class ContractCtl {
 	private interface Page {
 		String EDIT = PATH + "edit";
 		String VIEW = PATH + "view";
+		String START= PATH + "start";
 	}
 	
 	@Autowired
@@ -35,6 +39,10 @@ public class ContractCtl {
 	RuntimeService runtimeService;
 	@Autowired
 	TaskService taskService;
+	@Autowired
+	IdentityService identityService;
+	@Autowired
+	SessionUtil sessionUtil;
 	
 	@RequestMapping(value="",method=RequestMethod.GET)
 	public String toNew(Map<String,Object> map,@RequestParam(value="taskId",required=false)String taskId){
@@ -83,7 +91,7 @@ public class ContractCtl {
 	}
 	
 	@RequestMapping(value="check",method=RequestMethod.POST)
-	public String check(@RequestParam("leaderPass")Boolean leaderPass,RedirectAttributes redirectAttributes,@RequestParam(value="taskId",required=false)String taskId){
+	public String check(RedirectAttributes redirectAttributes,@RequestParam("leaderPass")Boolean leaderPass,@RequestParam(value="taskId",required=false)String taskId){
 		Map<String, Object> variableMap = new HashMap<String, Object>();
 		variableMap.put("leaderPass", leaderPass);
 		taskService.complete(taskId, variableMap);
@@ -91,4 +99,24 @@ public class ContractCtl {
 		return "redirect:/process/execute";
 	}
 	
+	@RequestMapping(value="start",method=RequestMethod.GET)
+	public String toStart(Map<String,Object> map,@RequestParam(value="processDefinitionKey",required=false)String processDefinitionKey){
+		Contract contract = ContractFactory.create();
+		map.put("contract", contract);
+		map.put("processDefinitionKey", processDefinitionKey);
+		return Page.START;
+	}
+	
+	@RequestMapping(value="start",method=RequestMethod.POST)
+	public String start(Contract contract,RedirectAttributes redirectAttributes,@RequestParam(value="processDefinitionKey",required=false)String processDefinitionKey){
+		User user=sessionUtil.getValue("user");
+		contract = contractService.save(contract);
+		Map<String, Object> variableMap = new HashMap<String, Object>();
+		variableMap.put("businessId", contract.getId());
+		variableMap.put("applyUser", user.getUsername());
+		identityService.setAuthenticatedUserId(user.getUsername());
+		runtimeService.startProcessInstanceByKey(processDefinitionKey, variableMap);
+		redirectAttributes.addFlashAttribute(Constant.MESSAGE_NAME, Message.create().info().message("流程[%s]已启动！",processDefinitionKey));
+		return "redirect:/process/start";
+	}
 }
