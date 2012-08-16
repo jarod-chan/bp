@@ -1,3 +1,5 @@
 1 activiti 日志控制问题 
 
 2 spring jpa data 扩展
+
+3 user 包无法单独发布 ，无法扫描注解
