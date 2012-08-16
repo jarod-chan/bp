@@ -13,18 +13,17 @@
 	<%@ include file="/common/meta.jsp" %>
 	<%@ include file="/common/include-base-styles.jsp" %>
 	<%@ include file="/common/include-jquery-ui-theme.jsp" %>
-	<title>流程执行</title>
+	<title>流程列表</title>
 	
 	<script src="${ctx }/js/common/jquery.js" type="text/javascript"></script>
     <script src="${ctx }/js/common/plugins/jui/jquery-ui.min.js" type="text/javascript"></script>
     <script type="text/javascript">
     $(function() {
-    	$('.btn_execute').button().click(function(){
+    	$('.btn_start').button().click(function(){
     		var param=jQuery.parseJSON($(this).attr("param"));
-    		$('<form/>',{action:'${ctx}/'+param.formKey+'/'+param.businessId,method:'get'})
-    			.append($('<input/>',{type:'hidden',name:'taskId',value:param.taskId}))
-				.appendTo($("body"))
-			.submit();
+    		$('<form/>',{action:'${ctx}/process/start/'+param.key,method:'post'})
+ 		 	.appendTo($("body"))
+ 		 	.submit();
     	});
     });
     </script>
@@ -36,24 +35,23 @@
 	<table width="100%" class="need-border">
 		<thead>
 			<tr>
-			 	<th>流程id</th>
-				<th>任务Id</th>
-				<th>任务名称</th>
-				 <th>表单</th> 
-				 <th>业务id</th> 
+				<th>流程名称</th>
+				<th>版本号</th>
+				<th>KEY</th>
+				<th>流程图</th>
 				<th>操作</th>
 			</tr>
 		</thead>
 		<tbody>
-			<c:forEach var="processTask" items="${processTasks}" >
+			<c:forEach items="${processDefinitions}" var="processDefinition">
 				<tr>
-					 <td>${processTask.processInstance.id }</td>
-					 <td>${processTask.task.id }</td>
-					 <td>${processTask.task.name }</td>
-					 <td>${processTask.formKey}</td> 
-					 <td>${processTask.businessId}</td> 
+					<td>${processDefinition.name }</td>
+					<td>${processDefinition.version }</td>
+					<td>${processDefinition.key }</td>
+					<td><a target="_blank" href='${ctx }/workflow/manage/${processDefinition.deploymentId}/resource?resourceName=${processDefinition.diagramResourceName }'>${processDefinition.diagramResourceName }</a></td>
 					<td>
-						<button class="btn_execute" param='{"taskId":"${processTask.task.id }","formKey":"${processTask.formKey}","businessId":"${processTask.businessId}"}' >执行</button></td>
+						<button class="btn_start" param='{"key":"${processDefinition.key}"}' >启动</button>
+					</td>
 				</tr>
 			</c:forEach>
 		</tbody>

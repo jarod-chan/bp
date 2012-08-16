@@ -5,7 +5,7 @@
 		<a rel="#">工作台</a>
 		<ul>
 			<li><a rel='process/execute'>任务执行</a></li>
-			<li><a rel='process/running'>流程状态</a></li>
+			<li><a rel='process/start'>启动流程</a></li>
 		</ul>
 	</li>
 	<li>

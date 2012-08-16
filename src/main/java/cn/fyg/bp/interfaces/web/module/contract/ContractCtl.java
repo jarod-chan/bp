@@ -37,40 +37,34 @@ public class ContractCtl {
 	TaskService taskService;
 	
 	@RequestMapping(value="",method=RequestMethod.GET)
-	public String toNew(@RequestParam(value="processInstanceId",required=false)String processInstanceId,
-			@RequestParam(value="taskId",required=false)String taskId,Map<String,Object> map){
+	public String toNew(Map<String,Object> map,@RequestParam(value="taskId",required=false)String taskId){
 		Contract contract = ContractFactory.create();
 		map.put("contract", contract);
-		map.put("processInstanceId", processInstanceId);
 		map.put("taskId", taskId);
 		return Page.EDIT;
 	}
 	
 	@RequestMapping(value="{businessId}",method=RequestMethod.GET)
-	public String toEdit(@PathVariable(value="businessId")Long businessId,@RequestParam(value="processInstanceId",required=false)String processInstanceId,
-			@RequestParam(value="taskId",required=false)String taskId,Map<String,Object> map){
+	public String toEdit(@PathVariable(value="businessId")Long businessId,Map<String,Object> map,@RequestParam(value="taskId",required=false)String taskId){
 		Contract contract = contractService.find(businessId);
 		map.put("contract", contract);
-		map.put("processInstanceId", processInstanceId);
 		map.put("taskId", taskId);
 		return Page.EDIT;
 	}
 	
 	@RequestMapping(value="save",method=RequestMethod.POST)
-	public String save(Contract contract,@RequestParam(value="processInstanceId",required=false)String processInstanceId,
-			@RequestParam(value="taskId",required=false)String taskId,RedirectAttributes redirectAttributes){
+	public String save(Contract contract,RedirectAttributes redirectAttributes,@RequestParam(value="taskId",required=false)String taskId){
 		contract = contractService.save(contract);
-		runtimeService.setVariable(processInstanceId, "businessId", contract.getId());
-		redirectAttributes.addFlashAttribute(Constant.MESSAGE_NAME, Message.create().info().message("合同保存成功！"));
-		redirectAttributes.addAttribute("businessId", contract.getId());
-		redirectAttributes.addAttribute("processInstanceId", processInstanceId);
-		redirectAttributes.addAttribute("taskId", taskId);
-		return "redirect:/contract/{businessId}?processInstanceId={processInstanceId}&taskId={taskId}";
+		taskService.setVariable(taskId, "businessId", contract.getId());
+		redirectAttributes
+			.addAttribute("businessId", contract.getId())
+			.addAttribute("taskId", taskId)
+			.addFlashAttribute(Constant.MESSAGE_NAME, Message.create().info().message("合同保存成功！"));
+		return "redirect:/contract/{businessId}?taskId={taskId}";
 	}
 	
 	@RequestMapping(value="commit",method=RequestMethod.POST)
-	public String commit(Contract contract,@RequestParam(value="processInstanceId",required=false)String processInstanceId,
-			@RequestParam(value="taskId",required=false)String taskId,RedirectAttributes redirectAttributes){
+	public String commit(Contract contract,RedirectAttributes redirectAttributes,@RequestParam(value="taskId",required=false)String taskId){
 		contract = contractService.save(contract);
 		Map<String, Object> variableMap = new HashMap<String, Object>();
 		variableMap.put("businessId", contract.getId());
@@ -81,18 +75,15 @@ public class ContractCtl {
 	
 	
 	@RequestMapping(value="view/{businessId}",method=RequestMethod.GET)
-	public String toView(@PathVariable(value="businessId")Long businessId,@RequestParam(value="processInstanceId",required=false)String processInstanceId,
-			@RequestParam(value="taskId",required=false)String taskId,Map<String,Object> map){
+	public String toView(@PathVariable(value="businessId")Long businessId,Map<String,Object> map,@RequestParam(value="taskId",required=false)String taskId){
 		Contract contract = contractService.find(businessId);
 		map.put("contract", contract);
-		map.put("processInstanceId", processInstanceId);
 		map.put("taskId", taskId);
 		return Page.VIEW;
 	}
 	
 	@RequestMapping(value="check",method=RequestMethod.POST)
-	public String check(@RequestParam(value="processInstanceId",required=false)String processInstanceId,
-			@RequestParam(value="taskId",required=false)String taskId,@RequestParam("leaderPass")Boolean leaderPass,RedirectAttributes redirectAttributes){
+	public String check(@RequestParam("leaderPass")Boolean leaderPass,RedirectAttributes redirectAttributes,@RequestParam(value="taskId",required=false)String taskId){
 		Map<String, Object> variableMap = new HashMap<String, Object>();
 		variableMap.put("leaderPass", leaderPass);
 		taskService.complete(taskId, variableMap);
