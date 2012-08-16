@@ -28,7 +28,7 @@ public class StartCtl {
 	
 	private static final String PATH = "process/start/";
 	private interface Page {
-		String LIST = PATH + "list";
+		String START = PATH + "start";
 	}
 	
 	@Autowired
@@ -44,7 +44,7 @@ public class StartCtl {
 	public String toList(Map<String,Object> map){
 		List<ProcessDefinitionBean> processDefinitionBeans=startFacade.getProcessDefinitionBean();
 		map.put("processDefinitionBeans", processDefinitionBeans);
-		return Page.LIST;
+		return Page.START;
 	}
 	
 	@RequestMapping(value = "{key}", method = RequestMethod.POST)

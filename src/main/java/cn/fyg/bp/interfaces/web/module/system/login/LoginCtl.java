@@ -59,6 +59,20 @@ public class LoginCtl {
 		User user=userService.findById(userId);
 		sessionUtil.invalidate();
 		sessionUtil.setValue("user", user);
+		filterAdmin(user);
+	}
+
+	/**
+	 * XXX 临时管理员处理
+	 * @param user
+	 */
+	private void filterAdmin(User user) {
+		if(user.getUsername().equals("admin")){
+			sessionUtil.setValue("isAdmin", Boolean.TRUE);
+		}else{
+			sessionUtil.setValue("isAdmin", Boolean.FALSE);
+		}
+		sessionUtil.setValue("nofilter", Boolean.TRUE);
 	}
 
 
