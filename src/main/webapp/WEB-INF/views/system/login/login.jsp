@@ -4,6 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 	<%@ include file="/common/global.jsp"%>
+	<title>方远房产流程系统</title>
 	<%@ include file="/common/meta.jsp" %>
 	<%@ include file="/common/include-jquery-ui-theme.jsp" %>
     <%@ include file="/common/include-base-styles.jsp" %>   

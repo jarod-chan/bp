@@ -7,8 +7,8 @@ function graphTrace(options) {
     var opts = $.extend(true, _defaults, options);
     
     // 获取图片资源
-    var imageUrl = ctx + "/workflow/resource/process-instance?pid=" + opts.pid + "&type=image";
-    $.getJSON(ctx + '/workflow/process/trace?pid=' + opts.pid, function(infos) {
+    var imageUrl = ctx + "/workflow/cm/resource/process-instance?pid=" + opts.pid + "&type=image";
+    $.getJSON(ctx + '/workflow/cm/process/trace?pid=' + opts.pid, function(infos) {
     
         var positionHtml = "";
         

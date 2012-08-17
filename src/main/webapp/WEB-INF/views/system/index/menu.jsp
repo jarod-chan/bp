@@ -18,6 +18,7 @@
 		<ul>
 			<li><a rel='workflow/deploy'>流程部署</a></li>
 			<li><a rel='workflow/manage'>流程管理</a></li>
+			<li><a rel='workflow/running'>流程运行</a></li>
 			<li><a rel='workflow/history'>流程历史</a></li>
 		</ul>
 	</li>
