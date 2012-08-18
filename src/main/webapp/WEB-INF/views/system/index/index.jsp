@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml"> 
 <head>
 	<%@ include file="/common/global.jsp"%>
 	<title>方远房产流程系统</title>
@@ -36,16 +36,15 @@
 <!-- #TopPane -->
 <div id="topPane" class="ui-layout-north ui-widget ui-widget-header ui-widget-content">
 	<div style="padding-left:5px; font-size: 16px; margin-top: 1px;">
-       	<table id="topTable" style="padding: 0px;margin: 0px;margin-top: -5px;padding-top: 8px;" width="100%">
+       	<table id="topTable" style="padding: 0px;margin: 0px;margin-top: 0px;" width="100%">
        		<tr>
        			<td>
-       				<span style="font-size: 30px;color:#FFFF33;padding-top: 10px;">方远房产流程系统</span>
+       				<div style="font-size: 30px;color:#FFFF33;line-height:100%;">方远房产流程系统</div>
        			</td>
        			<td>
-       				<div style="float:right; color: #fff;font-size: 12px;margin-top: 2px">
+       				<div style="float:right; color: #fff;font-size: 12px;">
 		        		<div>
-		        			<label for="username">欢迎：</label>
-		        			<span title="角色：${groupNames }">${user.realname }/${user.username }</span>
+		        			<label style="vertical-align: baseline;top:0px; " for="username">欢迎：</label><span title="角色：${groupNames }">${user.realname }/${user.username }</span>
 		        		</div>
 		        		<div style="text-align: right;">
 		        			<a id="chang-theme" href="#">切换风格</a>
@@ -54,7 +53,7 @@
 		        	</div>
        			</td>
        		</tr>
-       	</table>
+       	</table> 
        </div>
 </div>
 

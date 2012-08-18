@@ -5,7 +5,7 @@ import java.math.BigDecimal;
 public class Constant {
 	
 	/**
-	 * 信心传递key
+	 * 信息传递key
 	 */
 	public static String MESSAGE_NAME="message";
 	/**
