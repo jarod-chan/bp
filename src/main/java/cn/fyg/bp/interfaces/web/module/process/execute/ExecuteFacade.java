@@ -27,12 +27,12 @@ public class ExecuteFacade {
 		for (Task task : tasks) {
 			ProcessTaskBean processTaskBean=new ProcessTaskBean();
 			processTaskBean.setTask(task);
-			String processInstanceId = task.getProcessInstanceId();
-			ProcessInstance processInstance = runtimeService.createProcessInstanceQuery().processInstanceId(processInstanceId).singleResult();
+			String executionId = task.getExecutionId();
+			ProcessInstance processInstance = runtimeService.createProcessInstanceQuery().processInstanceId(executionId).singleResult();
 			processTaskBean.setProcessInstance(processInstance);
 			String formKey= formService.getTaskFormData(task.getId()).getFormKey();
 			processTaskBean.setFormKey(formKey);
-			Object obj=runtimeService.getVariable(processInstanceId, "businessId");
+			Object obj=runtimeService.getVariableLocal(executionId, "businessId");
 			String businessId=obj==null?"":obj.toString();
 			processTaskBean.setBusinessId(businessId);
 			result.add(processTaskBean);

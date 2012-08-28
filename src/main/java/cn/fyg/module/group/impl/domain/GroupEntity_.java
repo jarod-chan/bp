@@ -1,0 +1,17 @@
+package cn.fyg.module.group.impl.domain;
+
+import javax.annotation.Generated;
+import javax.persistence.metamodel.SingularAttribute;
+import javax.persistence.metamodel.StaticMetamodel;
+
+@Generated(value = "org.hibernate.jpamodelgen.JPAMetaModelEntityProcessor")
+@StaticMetamodel(GroupEntity.class)
+public abstract class GroupEntity_ {
+
+	public static volatile SingularAttribute<GroupEntity, String> Key;
+	public static volatile SingularAttribute<GroupEntity, String> name;
+	public static volatile SingularAttribute<GroupEntity, GroupEntity> parent;
+	public static volatile SingularAttribute<GroupEntity, String> code;
+
+}
+

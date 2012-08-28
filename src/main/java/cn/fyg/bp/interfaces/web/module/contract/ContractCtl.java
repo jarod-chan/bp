@@ -6,6 +6,7 @@ import java.util.Map;
 import org.activiti.engine.IdentityService;
 import org.activiti.engine.RuntimeService;
 import org.activiti.engine.TaskService;
+import org.activiti.engine.task.Task;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -63,7 +64,8 @@ public class ContractCtl {
 	@RequestMapping(value="save",method=RequestMethod.POST)
 	public String save(Contract contract,RedirectAttributes redirectAttributes,@RequestParam(value="taskId",required=false)String taskId){
 		contract = contractService.save(contract);
-		taskService.setVariable(taskId, "businessId", contract.getId());
+		Task task = taskService.createTaskQuery().taskId(taskId).singleResult();
+		runtimeService.setVariableLocal(task.getExecutionId(), "businessId", contract.getId());
 		redirectAttributes
 			.addAttribute("businessId", contract.getId())
 			.addAttribute("taskId", taskId)
@@ -74,9 +76,9 @@ public class ContractCtl {
 	@RequestMapping(value="commit",method=RequestMethod.POST)
 	public String commit(Contract contract,RedirectAttributes redirectAttributes,@RequestParam(value="taskId",required=false)String taskId){
 		contract = contractService.save(contract);
-		Map<String, Object> variableMap = new HashMap<String, Object>();
-		variableMap.put("businessId", contract.getId());
-		taskService.complete(taskId, variableMap);
+		Task task = taskService.createTaskQuery().taskId(taskId).singleResult();
+		runtimeService.setVariableLocal(task.getExecutionId(), "businessId", contract.getId());
+		taskService.complete(taskId);
 		redirectAttributes.addFlashAttribute(Constant.MESSAGE_NAME, Message.create().info().message("合同提交成功！"));
 		return "redirect:/process/execute";
 	}
