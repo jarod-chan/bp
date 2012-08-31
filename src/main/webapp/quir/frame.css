@@ -346,3 +346,27 @@ li.fn a:link, li.fn a:visited {
     color: #FFFFFF;
 }
 
+
+/*主要frame*/
+#mainFrameContainer {
+	position: absolute;
+	top: 77px;
+	left: 192px;
+	bottom: 0;
+	right: 0;
+	overflow: hidden;
+	z-index: 4;
+}
+
+#mainFrame {
+	width: 100%;
+	_width: expression(document.body.offsetWidth -   192 +   'px');
+	height: 100%;
+	*height: expression(document.body.offsetHeight -   77 +   'px');
+	z-index: 5;
+}
+
+/* 在ie下有问题，所以加这里 */
+#mainFrame {position: absolute;	_position: relative}
+
+

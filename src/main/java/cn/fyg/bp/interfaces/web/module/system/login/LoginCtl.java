@@ -52,7 +52,8 @@ public class LoginCtl {
 			return "redirect:/login";
 		}
 		initLoginState(userId);
-		return "redirect:/index";
+		//return "redirect:/index";
+		return "redirect:/frame";
 	}
 
 	private void initLoginState(String userId) {

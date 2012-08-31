@@ -1,21 +1,22 @@
-package cn.fyg.bp.interfaces.web.module.qui;
+package cn.fyg.bp.interfaces.web.module.function.taskcenter;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
-@RequestMapping("/qui")
-public class QuiCtl {
+@RequestMapping("/taskcenter")
+public class TaskCenter {
 	
-	private static final String PATH = "qui/";
+	private static final String PATH = "taskcenter/";
 	private interface Page {
-		String FRAME = PATH + "frame";
+		String LIST = PATH + "list";
+		String SUB=PATH + "sub";
 	}
 	
 	@RequestMapping(value="",method=RequestMethod.GET)
-	public String toQui(){
-		return Page.FRAME;
+	public String toList(){
+		return Page.LIST;
 	}
 
 }

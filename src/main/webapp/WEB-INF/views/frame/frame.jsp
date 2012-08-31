@@ -1,5 +1,5 @@
 <%@ page language="java" pageEncoding="UTF-8"%>
-<!doctype html>
+<!DOCTYPE html>
 <html>
 <head>
 	<title>QUI </title>
@@ -22,10 +22,10 @@
 				</a>
 				<div class="switch">
 					<div class="left" style="margin-top:1px;">
-						<b id="useralias">用户姓名</b><span class="pointer" id="useraddrcontainer">&lt;<span title="关联其他QQ邮箱" id="useraddr">账号</span>&gt;</span>
+						<b id="useralias">${user.realname }</b><span class="pointer" id="useraddrcontainer">&lt;<span title="系统账号" id="useraddr">${user.username}</span>&gt;</span>
 						<br>
 						<span class="addrtitle">
-							<a target="mainFrame" href="/cgi-bin/today?sid=gV6WdgPHULGMAg9f&amp;loc=frame_html,,,2">用户首页</a>
+							<a target="mainFrame" href="qui/sub">个人首页</a>&nbsp;|&nbsp;<a id="frame_html_setting" target="mainFrame" href="/cgi-bin/setting1?sid=gV6WdgPHULGMAg9f&amp;fun=list&amp;loc=frame_html,,,3">安全退出</a>
 						</span>
 					</div>
 				</div>
@@ -99,7 +99,7 @@
 	</div>
 
 	<div id="mainFrameContainer">
-		<iframe id="mainFrame" scrolling="auto" frameborder="no" hidefocus="" name="mainFrame" src="" onload="">
+		<iframe id="mainFrame" scrolling="auto" frameborder="no" hidefocus="" name="mainFrame" src="http://localhost:8080/bp/frame/sub" onload="">
 		</iframe>
 	</div>
 
