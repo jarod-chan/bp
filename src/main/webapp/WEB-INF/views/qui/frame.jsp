@@ -66,21 +66,24 @@
 						<div id="OutFolder">
 							<div id="SysFolderList">
 								<ul class="fdul">
-									<li style="" class="fs" dr="1" id="folder_1_td"><a
-										hidefocus="" title="" class="f_size" target="mainFrame"
+									<li style="" class="fs" dr="1" id="folder_1_td">
+										<a hidefocus="" title="" class="f_size" target="mainFrame"
 										href="/cgi-bin/mail_list?sid=ZbpDu87BKMn2UVwM&amp;folderid=1&amp;page=0&amp;s=inbox&amp;loc=folderlist,,,1"
-										onclick="switchFolder(this.id);" id="folder_1">收件箱</a></li>
+										onclick="switchFolder(this.id);" id="folder_1">功能菜单</a>
+									</li>
 									<li dr="starred" class="fs" id="folder_starred_td">
-									<a hidefocus="" title="" class="f_size staradjust"
+										<a hidefocus="" title="" class="f_size staradjust"
 										target="mainFrame"
 										href="/cgi-bin/mail_list?sid=ZbpDu87BKMn2UVwM&amp;s=star&amp;folderid=all&amp;flag=star&amp;page=0&amp;need_folderlock=0&amp;fun=slock&amp;loc=folderlist,,,110&amp;topmails=0"
-										onclick="switchFolder(this.id);" id="folder_starred">星标邮件<input
-											type="button" hidefocus=""
-											class="ico_input icon_folderlist_star"></a></li>
-									<li style="" class="fs" dr="8" id="folder_8_td"><a
+										onclick="switchFolder(this.id);" id="folder_starred">功能菜单
+										</a>
+									</li>
+									<li style="" class="fn" dr="8" id="folder_8_td">
+										<a
 										hidefocus="" title="" class="f_size" target="mainFrame"
 										href="/cgi-bin/mail_list?sid=ZbpDu87BKMn2UVwM&amp;folderid=8&amp;page=0&amp;t=mail_list_group&amp;loc=folderlist,,,8"
-										onclick="switchFolder(this.id);" id="folder_8">群邮件</a></li>
+										onclick="switchFolder(this.id);" id="folder_8">功能菜单</a>
+									</li>
 								</ul>
 								<div class="sepline"></div>
 							</div>

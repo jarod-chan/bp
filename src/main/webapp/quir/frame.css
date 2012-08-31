@@ -202,3 +202,64 @@ a:hover {
 	height: 13px;
 }
 
+.newskinbody li.fs,.newskinbody li.fn {
+	padding-left: 0;
+	padding-right: 0;
+}
+
+li.fs {
+	color: #0055ac;
+}
+
+li.fs,li.fn,li.f_calender {
+	height: 23px;
+	line-height: 22px;
+	padding-left: 13px;
+	padding-right: 2px;
+	margin: 0 5px 3px;
+}
+
+li.fs,li.fn,li.f_calender {
+	height: 22px;
+	line-height: 22px;
+	overflow: hidden;
+	padding: 0 2px 0 13px;
+	line-height: auto;
+	margin-bottom: 1px;
+	margin-top: 0;
+}
+
+.newskinbody li.fs a,.newskinbody li.fn a {
+	display: block;
+	height: 22px;
+	overflow: hidden;
+	padding-left: 13px;
+	text-decoration: none;
+}
+
+a,a:link,a:visited,li.fs a.fdleft:hover,li.fd_mg a.fdleft:hover {
+	color: #1e5494;
+}
+
+.f_size {
+	font-size: 12px;
+}
+
+li.fn {
+	background: #528bcb;
+	background-image: -moz-linear-gradient(top, #6499d6, #528bcb);
+	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#6499d6),
+		to(#528bcb) );
+	color: #FFFFFF;
+}
+
+
+.newskinbody li.fs a:hover,.newskinbody li.fs_sep a:hover {
+	background: #e0ecf9;
+	text-decoration: none;
+}
+
+li.fn a:link, li.fn a:visited {
+    color: #FFFFFF;
+}
+
