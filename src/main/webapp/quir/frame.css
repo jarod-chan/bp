@@ -1,0 +1,204 @@
+td,input,button,select,body {
+	font-family: "Helvetica Neue", "lucida Grande", Verdana;
+	font-size: 12px;
+}
+
+h1,h2,h3,h4,h5,h6 {
+	font-size: 12px;
+	font-weight: normal;
+	margin: 0;
+}
+
+ul,li {
+	list-style: none;
+}
+
+input,textarea,a {
+	outline: none;
+}
+
+form,body,ul,li {
+	margin: 0;
+	padding: 0;
+}
+
+select,body,textarea {
+	background-color: #fff;
+	font-size: 12px;
+}
+
+select {
+	font-weight: normal;
+	font-size: 12px;
+	font-family: Tahoma;
+	line-height: 20px;
+}
+
+textarea {
+	width: 540px;
+	border: 1px solid #718da6;
+	padding: 3px;
+	font-family: "lucida Grande", Verdana;
+}
+
+img {
+	border: none
+}
+
+a {
+	text-decoration: none;
+	cursor: pointer;
+	outline: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+/*-topDataTd-*/
+#topDataTd {
+	height: 66px;
+	overflow: hidden;
+}
+
+.topdata {
+	height: 66px;
+}
+
+/*-seplineTd-*/
+#sepLineTd {
+	position: absolute;
+	top: 66px;
+	left: 0;
+	right: 0;
+	height: 11px;
+}
+
+.topline {
+	height: 11px;
+}
+
+.topline {
+	width: auto;
+	border-left: 8px solid #fff;
+	height: 11px;
+	border-right: 0;
+	background:
+		url(nav_bg0f10a7.gif) 0 -112px repeat-x;
+}
+
+.left,.qm_left {
+	float: left;
+}
+
+.toplineimg {
+	width: 184px;
+	height: 22px;
+}
+
+
+.toplineimg {
+	background:
+		url(topline0aa5d8.gif)
+		-179px 0;
+}
+
+/*---------------------------------*/
+.fdbody {
+	background: #89b5e9;
+	border-left: 8px solid #fff;
+	border-right: 1px solid #78a3d2;
+}
+
+.bodybgbt {
+	position: absolute;
+	top: 77px;
+	width: 179px;
+	bottom: 0;
+	_height: expression(document.body.offsetHeight -   77 +   'px');
+}
+
+/*左侧边栏*/
+#leftPanel {
+	position: absolute;
+	top: 77px;
+	width: 179px;
+	left: 8px;
+	bottom: 0;
+	border-left: 0 none;
+	height: auto;
+	_height: expression(document.body.offsetHeight -   77 +   'px');
+}
+
+/*边栏上面框*/
+#navBarDiv {
+	position: absolute:top:0;
+	right: 0;
+	z-index: 3;
+}
+
+.navbar {
+	background:
+		url(nav_bg0f10a7.gif)
+		no-repeat;
+}
+
+.navbar {
+	width: 179px;
+	height: 107px;
+	margin: 0;
+	list-style: none;
+}
+
+/*左中 */
+.listbg {
+	background:
+		url(topline0aa5d8.gif)
+		repeat-y;
+}
+
+.listflow {
+	position: absolute;
+	top: 107px;
+	left: 0;
+	right: 0;
+	bottom: 13px;
+	overflow: hidden;
+	height: auto;
+}
+
+.folderDiv {
+	margin: 0 5px 0 6px;
+	position: absolute;
+	_position: none;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	height: 100%;
+	_height: expression(document.body.offsetHeight -   197 +   'px');
+	overflow: auto;
+	overflow-x: hidden;
+	_font-family: \5B8B\4F53;
+}
+
+/* 左下 */
+#navBottomTd {
+	position: absolute;
+	bottom: 0;
+	height: 13px;
+	overflow: hidden;
+	background-repeat: no-repeat;
+}
+
+.navbottom {
+	background:
+		url(topline0aa5d8.gif)
+		-179px -11px no-repeat;
+}
+
+.navbottom {
+	width: 179px;
+	height: 13px;
+}
+
