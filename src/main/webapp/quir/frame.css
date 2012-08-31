@@ -176,6 +176,63 @@ a:hover {
 	list-style: none;
 }
 
+.newskinbody ul.navbar li.fs,.newskinbody ul.navbar li.fs a {
+	height: 24px !important;
+}
+
+.newskinbody ul.navbar li.fs a {
+	line-height: 24px;
+	padding-left: 41px;
+}
+
+.newskinbody ul.navbar li.checkpart {
+	margin: 6px 10px 0 11px;
+	*margin: 4px 10px 0 11px;
+}
+
+.navbar a {
+	text-decoration: none;
+	font-weight: bold;
+	font-size: 14px;
+	font-family: "lucida Grande", Verdana;
+}
+
+.newskinbody ul.navbar li.fs input {
+	float: left;
+	border: 0;
+	padding: 0;
+	width: 20px;
+	height: 20px;
+	margin: -20px 0 0 12px;
+	*margin: -23px 0 0 2px;
+}
+
+.newskinbody ul.navbar li.composepart {
+	margin: 0 10px 0 11px;
+	padding: 2px 0 0 0;
+	height: 26px;
+	*height: 22px;
+}
+
+.composebtn {
+	background: url(mail0f6c3e.png) 0 -1px  no-repeat;
+	*background-position: 0 0;
+}
+
+.checkbtn {
+	background: url(mail0f6c3e.png) 0 -33px no-repeat;
+	*background-position: 0 -32px;
+}
+
+.newskinbody ul.navbar li.addrpart {
+	margin: 6px 10px 0 11px;
+}
+.addrbtn {
+	background: url(mail0f6c3e.png) 0 -63px no-repeat;
+	*background-position: 0 -62px;
+}
+
+
 /*左中 */
 .listbg {
 	background:

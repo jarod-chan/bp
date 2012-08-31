@@ -17,15 +17,15 @@
   	<div id="topDataTd" class="getuserdata">
 		<div class="topdata">
 	 		<div id="logotips" class="lgoo">
-				<a hidefocus="" target="mainFrame" href="/cgi-bin/today?sid=gV6WdgPHULGMAg9f&amp;error=index&amp;loc=frame_html,,,1" style="width:215px; height:60px;" class="imglogo pointer skinlogo">
-					<img height="60" src="quir/logo_0_00aa5cc.gif" id="imglogo" stylenum="0" logotitle="" e="imglogo" t="3" title="邮箱首页">
+				<a hidefocus="" target="mainFrame" href="#" style="width:215px; height:60px;" class="imglogo pointer skinlogo">
+					<img height="60" src="quir/logo_0_00aa5cc.gif" id="imglogo" stylenum="0" logotitle="" e="imglogo" t="3" title="">
 				</a>
 				<div class="switch">
 					<div class="left" style="margin-top:1px;">
 						<b id="useralias">用户姓名</b><span class="pointer" id="useraddrcontainer">&lt;<span title="关联其他QQ邮箱" id="useraddr">账号</span>&gt;</span>
 						<br>
 						<span class="addrtitle">
-							<a target="mainFrame" href="/cgi-bin/today?sid=gV6WdgPHULGMAg9f&amp;loc=frame_html,,,2">邮箱首页</a>&nbsp;|&nbsp;<a id="frame_html_setting" target="mainFrame" href="/cgi-bin/setting1?sid=gV6WdgPHULGMAg9f&amp;fun=list&amp;loc=frame_html,,,3">设置</a>&nbsp;-&nbsp;<a target="mainFrame" href="/cgi-bin/setting5?sid=gV6WdgPHULGMAg9f&amp;fun=list&amp;loc=frame_html,,,4" id="changeSkin">换肤</a>
+							<a target="mainFrame" href="/cgi-bin/today?sid=gV6WdgPHULGMAg9f&amp;loc=frame_html,,,2">用户首页</a>
 						</span>
 					</div>
 				</div>
@@ -43,18 +43,18 @@
 	
 		<div id="navBarDiv">
 			<ul id="navBarTd" class="navbar fdul">
-				<!-- <li class="checkpart fs">
-					<a onclick="recordReadedMailId(null);goUrlMainFrm('/cgi-bin/mail_list?sid=R5gAYBV32TgFFBlJ&amp;folderid=1&amp;page=0&amp;s=getmail&amp;today_tips=400&amp;loc=frame_html,,,22',true);switchFolder('folder_1');" hidefocus="" target="actionFrame" id="readmailbtn_link" href="javascript:;" initlized="true" md="0">任务中心</a>
+				<li id="composebtn_td" class="composepart fs">
+					<a target="mainFrame" href="/cgi-bin/readtemplate?sid=R5gAYBV32TgFFBlJ&amp;t=compose&amp;s=cnew&amp;loc=frame_html,,,21" hidefocus="" id="composebtn" initlized="true" md="0">任务中心</a>
 					<input type="button" disabled="" class="checkbtn">
 				</li>
-				<li id="composebtn_td" class="composepart fs">
-					<a target="mainFrame" href="/cgi-bin/readtemplate?sid=R5gAYBV32TgFFBlJ&amp;t=compose&amp;s=cnew&amp;loc=frame_html,,,21" hidefocus="" id="composebtn" initlized="true" md="0">发起流程</a>
+				<li class="checkpart fs">
+					<a onclick="recordReadedMailId(null);goUrlMainFrm('/cgi-bin/mail_list?sid=R5gAYBV32TgFFBlJ&amp;folderid=1&amp;page=0&amp;s=getmail&amp;today_tips=400&amp;loc=frame_html,,,22',true);switchFolder('folder_1');" hidefocus="" target="actionFrame" id="readmailbtn_link" href="javascript:;" initlized="true" md="0">发起流程</a>
 					<input type="button" disabled="" class="composebtn">
 				</li>
 				<li class="addrpart fs">
 					<a target="mainFrame" href="/cgi-bin/addr_listall?sid=R5gAYBV32TgFFBlJ&amp;sorttype=null&amp;category=all&amp;loc=frame_html,,,23" hidefocus="" initlized="true" md="0">流程跟踪</a>
 					<input type="button" disabled="" class="addrbtn">
-				</li> -->
+				</li> 
 			</ul>
 		</div>
 	
@@ -75,8 +75,7 @@
 										<a hidefocus="" title="" class="f_size staradjust"
 										target="mainFrame"
 										href="/cgi-bin/mail_list?sid=ZbpDu87BKMn2UVwM&amp;s=star&amp;folderid=all&amp;flag=star&amp;page=0&amp;need_folderlock=0&amp;fun=slock&amp;loc=folderlist,,,110&amp;topmails=0"
-										onclick="switchFolder(this.id);" id="folder_starred">功能菜单
-										</a>
+										onclick="switchFolder(this.id);" id="folder_starred">功能菜单</a>
 									</li>
 									<li style="" class="fn" dr="8" id="folder_8_td">
 										<a
