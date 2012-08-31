@@ -15,22 +15,22 @@
 <body class="frame_class">
 
   	<div id="topDataTd" class="getuserdata">
-		
-<!-- 		<div id="logotips" class="lgoo">
-			<a hidefocus="" target="mainFrame" href="/cgi-bin/today?sid=gV6WdgPHULGMAg9f&amp;error=index&amp;loc=frame_html,,,1" style="width:215px; height:60px;" class="imglogo pointer skinlogo">
-				<img height="60" src="quir/logo_0_00aa5cc.gif" id="imglogo" stylenum="0" logotitle="" e="imglogo" t="3" title="邮箱首页">
-			</a>
-			<div class="switch">
-				<div class="left" style="margin-top:1px;">
-					<b id="useralias">用户姓名</b><span class="pointer" id="useraddrcontainer">&lt;<span title="关联其他QQ邮箱" id="useraddr">账号</span>&gt;</span>
-					<br>
-					<span class="addrtitle">
-						<a target="mainFrame" href="/cgi-bin/today?sid=gV6WdgPHULGMAg9f&amp;loc=frame_html,,,2">邮箱首页</a>&nbsp;|&nbsp;<a id="frame_html_setting" target="mainFrame" href="/cgi-bin/setting1?sid=gV6WdgPHULGMAg9f&amp;fun=list&amp;loc=frame_html,,,3">设置</a>&nbsp;-&nbsp;<a target="mainFrame" href="/cgi-bin/setting5?sid=gV6WdgPHULGMAg9f&amp;fun=list&amp;loc=frame_html,,,4" id="changeSkin">换肤</a>
-					</span>
+		<div class="topdata">
+	 		<div id="logotips" class="lgoo">
+				<a hidefocus="" target="mainFrame" href="/cgi-bin/today?sid=gV6WdgPHULGMAg9f&amp;error=index&amp;loc=frame_html,,,1" style="width:215px; height:60px;" class="imglogo pointer skinlogo">
+					<img height="60" src="quir/logo_0_00aa5cc.gif" id="imglogo" stylenum="0" logotitle="" e="imglogo" t="3" title="邮箱首页">
+				</a>
+				<div class="switch">
+					<div class="left" style="margin-top:1px;">
+						<b id="useralias">用户姓名</b><span class="pointer" id="useraddrcontainer">&lt;<span title="关联其他QQ邮箱" id="useraddr">账号</span>&gt;</span>
+						<br>
+						<span class="addrtitle">
+							<a target="mainFrame" href="/cgi-bin/today?sid=gV6WdgPHULGMAg9f&amp;loc=frame_html,,,2">邮箱首页</a>&nbsp;|&nbsp;<a id="frame_html_setting" target="mainFrame" href="/cgi-bin/setting1?sid=gV6WdgPHULGMAg9f&amp;fun=list&amp;loc=frame_html,,,3">设置</a>&nbsp;-&nbsp;<a target="mainFrame" href="/cgi-bin/setting5?sid=gV6WdgPHULGMAg9f&amp;fun=list&amp;loc=frame_html,,,4" id="changeSkin">换肤</a>
+						</span>
+					</div>
 				</div>
-			</div>
-		</div> -->
-		
+			</div> 
+		</div>
 	</div>
 
 	<div id="sepLineTd" class="topline_height"><div class="topline"><div id="imgLine" class="toplineimg left"></div></div></div>

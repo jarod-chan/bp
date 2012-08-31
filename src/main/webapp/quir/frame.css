@@ -65,6 +65,32 @@ a:hover {
 	height: 66px;
 }
 
+.lgoo {
+	position: absolute;
+	left: 5px;
+	z-index: 6;
+}
+
+.pointer {
+	cursor: pointer;
+}
+
+.imglogo {
+	display: block;
+	float: left;
+}
+
+.switch {
+	display: block;
+	float: left;
+	margin: 12px 0 0 0;
+	line-height: 18px;
+}
+
+.addrtitle {
+	color: #798699;
+}
+
 /*-seplineTd-*/
 #sepLineTd {
 	position: absolute;
