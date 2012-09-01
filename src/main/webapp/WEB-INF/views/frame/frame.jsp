@@ -99,7 +99,7 @@
 	</div>
 
 	<div id="mainFrameContainer">
-		<iframe id="mainFrame" scrolling="auto" frameborder="no" hidefocus="" name="mainFrame" src="http://localhost:8080/bp/frame/sub" onload="">
+		<iframe id="mainFrame" scrolling="auto" frameborder="no" hidefocus="" name="mainFrame" src="taskcenter" onload="">
 		</iframe>
 	</div>
 

@@ -1,0 +1,119 @@
+/*
+扩展frame.css 用于子页面
+*/
+
+.txt_title,.composetab_sel {
+	color: #093665;
+}
+
+.txt_title {
+	font-weight: bold;
+	font-size: 14px;
+	font-family: "lucida Grande", Verdana;
+	margin: 4px 0 5px 8px;
+}
+
+/*-头部-----------------------------------------------------*/
+.toolheight:after {
+	display: block;
+	content: " ";
+	height: 0;
+	width: 100%;
+	overflow: hidden;
+}
+
+.toolbgline {
+	border-bottom: 1px solid #aac1de;
+}
+
+.toolbg,.toolbg1 {
+	background-color: #c1d9f3;
+}
+
+.toolbgline {
+	padding: 6px 7px 5px;
+	background-image: none;
+}
+
+.toolheight {
+	zoom: 1;
+}
+
+.nowrap {
+	white-space: nowrap;
+}
+
+/*按钮*/
+.toolheight .btn,.toolheight .qm_btn {
+	float: left;
+	margin: 1px 1px 0 0;
+}
+
+.btn,button,.qm_btn {
+	font-size: 12x;
+	padding-left: 0px;
+	padding-right: 0px;
+	padding-top: 3px\9;
+}
+
+
+.wd1 {
+	width: 50px;
+	margin: 1px 1px 0 0;
+}
+
+.wd2 {
+	width: 64px;
+	margin: 1px 1px 0 0;
+}
+
+.wd3 {
+	width: 82px;
+	margin: 1px 1px 0 0;
+}
+
+.wd4 {
+	width: 100px;
+	margin: 1px 1px 0 0;
+}
+
+.right,.qm_right {
+	float: right;
+}
+
+.toolheight .right,.toolheight .qm_right {
+	margin: 4px 0 0 0;
+}
+
+/*-表格样式-*/
+
+	table.O2 {
+		border-top: 1px solid #fff;
+		color: #3b3b3b;
+		table-layout:fixed;
+		width:100%;
+		*width:auto;
+	}
+	
+	th.title {
+		background: url(mail0f6c3e.png) -128px 0 repeat-y;
+		margin: 0;
+		padding: 0 0 0 12px;
+	}
+	
+	th.noborder{
+		margin: 0;
+		padding: 0 0 0 12px;
+	}
+	
+	
+	table.O2  th{
+		border-bottom: 1px solid #c1c8d2;
+		background-color: #f2f4f6;
+		padding-top: 0;
+		*padding-top: 2px;
+		text-align: left;
+		height: 20px;
+	}
+	
+

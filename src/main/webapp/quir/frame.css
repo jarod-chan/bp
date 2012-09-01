@@ -1,6 +1,41 @@
+.frame_class {
+	padding: 0;
+	margin: 0;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+}
+
+
+
+.tbody {
+	_position: relative;
+	padding: 2px 7px 6px 4px;
+}
+
+.black {
+	color: #000;
+}
+
+.normal {
+	font-weight: normal;
+}
+
+body {
+	background: #fff;
+}
+
+
+
 td,input,button,select,body {
 	font-family: "Helvetica Neue", "lucida Grande", Verdana;
 	font-size: 12px;
+}
+
+th{
+	font-family: "Helvetica Neue", "lucida Grande", Verdana;
+	font-size: 12px;
+	font-weight: normal;
 }
 
 h1,h2,h3,h4,h5,h6 {
