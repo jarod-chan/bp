@@ -117,14 +117,25 @@
 		height: 20px;
 	}
 	
+	table.O2 tbody tr{
+		height: 20px;
+	}
+	
+	table.O2 tbody tr:hover{
+		height: 20px;
+		background-color: #F3F3F3;
+	}
+	
 	table.O2 tbody td{
 		padding: 0 0 0 12px;
 		border-bottom-width: 1px;
 		border-bottom: 1px solid #E3E6EB;
 		font-weight: normal;
 		clear: both;
-		empty-cells : show /*内容为空依然显示*/
+		empty-cells : show ;/*内容为空依然显示*/
 	}
+	
+
 	
 	
 
