@@ -20,8 +20,9 @@
 				<a hidefocus="" target="mainFrame" href="#" style="width:215px; height:60px;" class="imglogo pointer skinlogo">
 					<img height="60" src="quir/logo_0_00aa5cc.gif" id="imglogo" stylenum="0" logotitle="" e="imglogo" t="3" title="">
 				</a>
-				<div class="switch">
-					<div class="left" style="margin-top:1px;">
+				
+				 <div class="switch" style="display: inline;">
+					<div class="left" style="margin-top:1px;display:inline;">
 						<b id="useralias">${user.realname }</b><span class="pointer" id="useraddrcontainer">&lt;<span title="系统账号" id="useraddr">${user.username}</span>&gt;</span>
 						<br>
 						<span class="addrtitle">
@@ -29,7 +30,7 @@
 						</span>
 					</div>
 				</div>
-			</div> 
+			</div>  
 		</div>
 	</div>
 

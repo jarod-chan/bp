@@ -93,6 +93,7 @@
 		table-layout:fixed;
 		width:100%;
 		*width:auto;
+		border-collapse:collapse;
 	}
 	
 	th.title {
@@ -115,5 +116,15 @@
 		text-align: left;
 		height: 20px;
 	}
+	
+	table.O2 tbody td{
+		padding: 0 0 0 12px;
+		border-bottom-width: 1px;
+		border-bottom: 1px solid #E3E6EB;
+		font-weight: normal;
+		clear: both;
+		empty-cells : show /*内容为空依然显示*/
+	}
+	
 	
 
