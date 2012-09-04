@@ -26,6 +26,15 @@
 					.appendTo($("body"))
 				.submit();
 	    	});
+	    	
+	    	//可以通过$(event.target)获取对象
+	    	$('table.O2 tbody tr').click(function(event){
+	    		var param=jQuery.parseJSON($(this).find(".param").val());
+	    		$('<form/>',{action:'${ctx}/'+param.formKey+'/'+param.businessId,method:'get'})
+	    			.append($('<input/>',{type:'hidden',name:'taskId',value:param.taskId}))
+					.appendTo($("body"))
+				.submit();
+	    	});
 	    });
     </script>
 
@@ -64,7 +73,7 @@
 					<th class="title">任务名称</th>
 					<th class="title">表单</th>
 					<th class="title">业务id</th>
-					<th class="title">操作</th>
+					<th class="none">param</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -75,9 +84,8 @@
 						<td>${processTask.task.name }</td>
 						<td>${processTask.formKey}</td>
 						<td>${processTask.businessId}</td>
-						<td>
-							 <button class="btn_execute"
-								param='{"taskId":"${processTask.task.id }","formKey":"${processTask.formKey}","businessId":"${processTask.businessId}"}'>执行</button>
+						<td class="none">
+							<input type="hidden" class="param" value='{"taskId":"${processTask.task.id }","formKey":"${processTask.formKey}","businessId":"${processTask.businessId}"}'/>
 						</td>
 					</tr>
 				</c:forEach>

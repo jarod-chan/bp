@@ -86,6 +86,9 @@
 }
 
 /*-表格样式-*/
+	.none{
+		display: none;
+	}
 
 	table.O2 {
 		border-top: 1px solid #fff;
