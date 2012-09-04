@@ -1,4 +1,4 @@
-package cn.fyg.bp.interfaces.web.module.process.execute;
+package cn.fyg.bp.interfaces.web.module.process.task;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,7 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
-public class ExecuteFacade {
+public class TaskFacade {
 	
 	@Autowired
 	RuntimeService runtimeService;

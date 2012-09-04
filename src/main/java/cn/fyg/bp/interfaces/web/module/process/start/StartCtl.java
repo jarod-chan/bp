@@ -21,7 +21,7 @@ import cn.fyg.bp.interfaces.web.shared.tool.Constant;
 import cn.fyg.module.user.User;
 
 @Controller
-@RequestMapping("/process/start")
+@RequestMapping("process/start")
 public class StartCtl {
 	
 	public static final Logger logger=LoggerFactory.getLogger(StartCtl.class);

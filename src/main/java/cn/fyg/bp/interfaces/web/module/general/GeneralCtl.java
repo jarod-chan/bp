@@ -37,7 +37,7 @@ public class GeneralCtl {
 	public String complete(RedirectAttributes redirectAttributes,@RequestParam(value="taskId",required=false)String taskId){
 		taskService.complete(taskId);
 		redirectAttributes.addFlashAttribute(Constant.MESSAGE_NAME, Message.create().info().message("任务完成！"));
-		return "redirect:/process/execute";
+		return "redirect:/process/task";
 	}
 
 }

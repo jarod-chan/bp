@@ -1,4 +1,7 @@
 <%@ page language="java" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:set var="ctx" value="${pageContext.request.contextPath}"/>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,6 +12,8 @@
 	<meta http-equiv="pragma" content="no-cache" />
  	
  	<link href="quir/frame.css" type="text/css"  rel="stylesheet">
+ 	<!-- 暂时引入jquery -->
+ 	<script src="/bp/js/common/jquery.js" type="text/javascript"></script>
  	
 </head>
 
@@ -26,7 +31,7 @@
 						<b id="useralias">${user.realname }</b><span class="pointer" id="useraddrcontainer">&lt;<span title="系统账号" id="useraddr">${user.username}</span>&gt;</span>
 						<br>
 						<span class="addrtitle">
-							<a target="mainFrame" href="qui/sub">个人首页</a>&nbsp;|&nbsp;<a id="frame_html_setting" target="mainFrame" href="/cgi-bin/setting1?sid=gV6WdgPHULGMAg9f&amp;fun=list&amp;loc=frame_html,,,3">安全退出</a>
+							<a target="mainFrame" href="frame/sub">个人首页</a>&nbsp;|&nbsp;<a href="/${ctx}">安全退出</a>
 						</span>
 					</div>
 				</div>
@@ -45,15 +50,15 @@
 		<div id="navBarDiv">
 			<ul id="navBarTd" class="navbar fdul">
 				<li id="composebtn_td" class="composepart fs">
-					<a target="mainFrame" href="/cgi-bin/readtemplate?sid=R5gAYBV32TgFFBlJ&amp;t=compose&amp;s=cnew&amp;loc=frame_html,,,21" hidefocus="" id="composebtn" initlized="true" md="0">任务中心</a>
+					<a target="mainFrame" href="process/task" >任务中心</a>
 					<input type="button" disabled="" class="checkbtn">
 				</li>
 				<li class="checkpart fs">
-					<a onclick="recordReadedMailId(null);goUrlMainFrm('/cgi-bin/mail_list?sid=R5gAYBV32TgFFBlJ&amp;folderid=1&amp;page=0&amp;s=getmail&amp;today_tips=400&amp;loc=frame_html,,,22',true);switchFolder('folder_1');" hidefocus="" target="actionFrame" id="readmailbtn_link" href="javascript:;" initlized="true" md="0">发起流程</a>
+					<a target="mainFrame" href="process/start" >发起流程</a>
 					<input type="button" disabled="" class="composebtn">
 				</li>
 				<li class="addrpart fs">
-					<a target="mainFrame" href="/cgi-bin/addr_listall?sid=R5gAYBV32TgFFBlJ&amp;sorttype=null&amp;category=all&amp;loc=frame_html,,,23" hidefocus="" initlized="true" md="0">流程跟踪</a>
+					<a target="mainFrame" href="frame/sub" >流程跟踪</a>
 					<input type="button" disabled="" class="addrbtn">
 				</li> 
 			</ul>
@@ -67,12 +72,10 @@
 						<div id="OutFolder">
 							<div id="SysFolderList">
 								<ul class="fdul">
-									<li style="" class="fs" dr="1" id="folder_1_td">
-										<a hidefocus="" title="" class="f_size" target="mainFrame"
-										href="/cgi-bin/mail_list?sid=ZbpDu87BKMn2UVwM&amp;folderid=1&amp;page=0&amp;s=inbox&amp;loc=folderlist,,,1"
-										onclick="switchFolder(this.id);" id="folder_1">功能菜单</a>
+									<li style="" class="fs" >
+										<a class="f_size" target="mainFrame" href="frame/sub" >请假历史</a>
 									</li>
-									<li dr="starred" class="fs" id="folder_starred_td">
+								<!-- 	<li dr="starred" class="fs" id="folder_starred_td">
 										<a hidefocus="" title="" class="f_size staradjust"
 										target="mainFrame"
 										href="/cgi-bin/mail_list?sid=ZbpDu87BKMn2UVwM&amp;s=star&amp;folderid=all&amp;flag=star&amp;page=0&amp;need_folderlock=0&amp;fun=slock&amp;loc=folderlist,,,110&amp;topmails=0"
@@ -83,7 +86,7 @@
 										hidefocus="" title="" class="f_size" target="mainFrame"
 										href="/cgi-bin/mail_list?sid=ZbpDu87BKMn2UVwM&amp;folderid=8&amp;page=0&amp;t=mail_list_group&amp;loc=folderlist,,,8"
 										onclick="switchFolder(this.id);" id="folder_8">功能菜单</a>
-									</li>
+									</li> -->
 								</ul>
 								<div class="sepline"></div>
 							</div>

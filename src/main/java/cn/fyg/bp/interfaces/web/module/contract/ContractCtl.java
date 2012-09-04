@@ -80,7 +80,7 @@ public class ContractCtl {
 		runtimeService.setVariableLocal(task.getExecutionId(), "businessId", contract.getId());
 		taskService.complete(taskId);
 		redirectAttributes.addFlashAttribute(Constant.MESSAGE_NAME, Message.create().info().message("合同提交成功！"));
-		return "redirect:/process/execute";
+		return "redirect:/process/task";
 	}
 	
 	
@@ -98,7 +98,7 @@ public class ContractCtl {
 		variableMap.put("leaderPass", leaderPass);
 		taskService.complete(taskId, variableMap);
 		redirectAttributes.addFlashAttribute(Constant.MESSAGE_NAME, Message.create().info().message("合同已处理！"));
-		return "redirect:/process/execute";
+		return "redirect:/process/task";
 	}
 	
 	@RequestMapping(value="start",method=RequestMethod.GET)
