@@ -1,58 +1,72 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<%@ page language="java" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html>
 <head>
-	<%@ include file="/common/global.jsp"%>
-	<script>
-		var notLogon = ${empty user};
-		if (notLogon) {
-			location.href = '${ctx}/login?error=nologon';
-		}
-	</script>
+	<title>流程历史</title>
+	<%@ include file="/common/setting.jsp" %>
 	<%@ include file="/common/meta.jsp" %>
-	<%@ include file="/common/include-base-styles.jsp" %>
-	<%@ include file="/common/include-jquery-ui-theme.jsp" %>
-	<title>流程列表</title>
+	<%@ include file="/common/include.jsp" %>	
 	
-	<script src="${ctx }/js/common/jquery.js" type="text/javascript"></script>
-    <script src="${ctx }/js/common/plugins/jui/jquery-ui.min.js" type="text/javascript"></script>
 </head>
-<body>
+<body class="tbody">
 	<c:if test="${not empty message}">
 		<div id="message" class="${message.level}">${message.message}</div>
 	</c:if>
-	<table width="100%" class="need-border">
-		<thead>
-			<tr>
-				<th>id</th>
-				<th>businessKey</th>
-				<th>processDefinitionId</th>
-				<th>startTime</th>
-				<th>endTime</th>
-				<th>durationInMillis</th>
-				<th>endActivityId</th>
-				<th>startUserId</th>
-				<th>startActivityId</th>
-				<th>deleteReason</th>
-			</tr>
-		</thead>
-		<tbody>
-			<c:forEach var="itme" items="${history}">
+	<div>
+		<div class="txt_title">
+			流程历史
+		</div>
+	
+		<div style="" class="toolbg toolbgline toolheight nowrap">
+			<div class="nowrap left">
+			</div>
+			<div class="right">
+				<!--页码 -->&nbsp;
+			</div>
+		</div>
+	
+		<table class="O2" cellspacing="0" cellpadding="0" >
+			<thead>
 				<tr>
-					<td>${itme.id}</td>
-					<td>${itme.businessKey}</td>
-					<td>${itme.processDefinitionId}</td>
-					<td>${itme.startTime}</td>
-					<td>${itme.endTime}</td>
-					<td>${itme.durationInMillis}</td>
-					<td>${itme.endActivityId}</td>
-					<td>${itme.startUserId}</td>
-					<td>${itme.startActivityId}</td>
-					<td>${itme.deleteReason}</td>
+					<th class="noborder">id</th>
+					<th class="title">businessKey</th>
+					<th class="title">processDefinitionId</th>
+					<th class="title">startTime</th>
+					<th class="title">endTime</th>
+					<th class="title">durationInMillis</th>
+					<th class="title">endActivityId</th>
+					<th class="title">startUserId</th>
+					<th class="title">startActivityId</th>
+					<th class="title">deleteReason</th>
 				</tr>
-			</c:forEach>
-		</tbody>
-	</table>
+			</thead>
+			<tbody>
+				<c:forEach var="itme" items="${history}">
+					<tr>
+						<td>${itme.id}</td>
+						<td>${itme.businessKey}</td>
+						<td>${itme.processDefinitionId}</td>
+						<td>${itme.startTime}</td>
+						<td>${itme.endTime}</td>
+						<td>${itme.durationInMillis}</td>
+						<td>${itme.endActivityId}</td>
+						<td>${itme.startUserId}</td>
+						<td>${itme.startActivityId}</td>
+						<td>${itme.deleteReason}</td>
+					</tr>
+				</c:forEach>
+			</tbody>
+		</table>
+		
+		<div style="" class="toolbg toolbgline toolheight nowrap">
+			<div class="right">
+				<!--页码 -->&nbsp;
+			</div>
+		</div>
+	
+	</div>
 </body>
 </html>

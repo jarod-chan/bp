@@ -1,24 +1,14 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<%@ page language="java" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html>
 <head>
-	<%@ include file="/common/global.jsp"%>
-	<title>流程实例</title>
+	<title>流程运行</title>
+	<%@ include file="/common/setting.jsp" %>
 	<%@ include file="/common/meta.jsp" %>
-    <%@ include file="/common/include-base-styles.jsp" %>
-    <%@ include file="/common/include-jquery-ui-theme.jsp" %>
-    <link href="${ctx }/js/common/plugins/jui/extends/timepicker/jquery-ui-timepicker-addon.css" type="text/css" rel="stylesheet" />
-    <link href="${ctx }/js/common/plugins/qtip/jquery.qtip.min.css" type="text/css" rel="stylesheet" />
-    <%@ include file="/common/include-custom-styles.jsp" %>
-    
-    <script src="${ctx }/js/common/jquery.js" type="text/javascript"></script>
-    <script src="${ctx }/js/common/plugins/jui/jquery-ui.min.js" type="text/javascript"></script>
-    <script src="${ctx }/js/common/plugins/jui/extends/timepicker/jquery-ui-timepicker-addon.js" type="text/javascript"></script>
-	<script src="${ctx }/js/common/plugins/jui/extends/i18n/jquery-ui-date_time-picker-zh-CN.js" type="text/javascript"></script>
-	<script src="${ctx }/js/common/plugins/qtip/jquery.qtip.pack.js" type="text/javascript"></script>
-	<script src="${ctx }/js/common/plugins/html/jquery.outerhtml.js" type="text/javascript"></script>
-	<script src="${ctx }/js/module/activiti/workflow.js" type="text/javascript"></script>
+	<%@ include file="/common/include.jsp" %>	
 	
     <script type="text/javascript">
 	    $(function() {
@@ -30,29 +20,52 @@
 	<c:if test="${not empty message}">
 		<div id="message" class="${message.level}">${message.message}</div>
 	</c:if>
-	<table width="100%" class="need-border">
-		<thead>
-			<tr>
-				<th>流程Id</th>
-				<th>流程Id[]</th>
-				<th>流程定义ID</th>
-				<th>是否挂起</th>
-				<th>运行状态</th>
-			</tr>
-		</thead>
-		<tbody>
-			<c:forEach items="${processInstances}" var="processInstance">
+	<div>
+		<div class="txt_title">
+			流程管理
+		</div>
+	
+		<div style="" class="toolbg toolbgline toolheight nowrap">
+			<div class="nowrap left">
+			</div>
+			<div class="right">
+				<!--页码 -->&nbsp;
+			</div>
+		</div>
+	
+		<table  class="O2" cellspacing="0" cellpadding="0">
+			<thead>
 				<tr>
-					<td>${processInstance.id }</td>
-					<td>${processInstance.processInstanceId }</td>
-					<td>${processInstance.processDefinitionId }</td>
-					<td>${processInstance.suspended }</td>
-					<td>
-						<a class="trace" href='#' pid="${processInstance.id }" title="点击查看流程图">跟踪流程</a>
-					</td>
+					<th class="noborder">流程Id</th>
+					<th class="title">流程Id[]</th>
+					<th class="title">流程定义ID</th>
+					<th class="title">是否挂起</th>
+					<th class="title">运行状态</th>
 				</tr>
-			</c:forEach>
-		</tbody>
-	</table>
+			</thead>
+			<tbody>
+				<c:forEach items="${processInstances}" var="processInstance">
+					<tr>
+						<td>${processInstance.id }</td>
+						<td>${processInstance.processInstanceId }</td>
+						<td>${processInstance.processDefinitionId }</td>
+						<td>${processInstance.suspended }</td>
+						<td>
+							<button class="btn_trace" param='{"filename":""}'>跟踪流程</button>
+							<%-- <a class="trace" href='#' pid="${processInstance.id }" title="点击查看流程图"></a> --%>
+						</td>
+					</tr>
+				</c:forEach>
+			</tbody>
+		</table>
+		
+		<div style="" class="toolbg toolbgline toolheight nowrap">
+			<div class="nowrap left">
+			</div>
+			<div class="right">
+				<!--页码 -->&nbsp;
+			</div>
+		</div>
+	</div>	
 </body>
 </html>

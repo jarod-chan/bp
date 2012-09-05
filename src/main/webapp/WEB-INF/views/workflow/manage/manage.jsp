@@ -1,31 +1,23 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<%@ page language="java" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html>
 <head>
-	<%@ include file="/common/global.jsp"%>
-	<script>
-		var notLogon = ${empty user};
-		if (notLogon) {
-			location.href = '${ctx}/login?error=nologon';
-		}
-	</script>
+	<title>流程管理</title>
+	<%@ include file="/common/setting.jsp" %>
 	<%@ include file="/common/meta.jsp" %>
-	<%@ include file="/common/include-base-styles.jsp" %>
-	<%@ include file="/common/include-jquery-ui-theme.jsp" %>
-	<title>流程列表</title>
-	
-	<script src="${ctx }/js/common/jquery.js" type="text/javascript"></script>
-    <script src="${ctx }/js/common/plugins/jui/jquery-ui.min.js" type="text/javascript"></script>
+	<%@ include file="/common/include.jsp" %>	
     <script type="text/javascript">
     $(function() {
-    	$('.btn_delete').button().click(function(){
+    	$('.btn_delete').click(function(){
     		var param=jQuery.parseJSON($(this).attr("param"));
     		$('<form/>',{action:'${ctx}/workflow/manage/'+param.deploymentId+'/delete',method:'post'})
  		 	.appendTo($("body"))
  		 	.submit();
     	});
-    	$('.btn_start').button().click(function(){
+    	$('.btn_start').click(function(){
     		var param=jQuery.parseJSON($(this).attr("param"));
     		$('<form/>',{action:'${ctx}/workflow/manage/process/'+param.processDefinitionId+'/start',method:'post'})
  		 	.appendTo($("body"))
@@ -38,36 +30,58 @@
 	<c:if test="${not empty message}">
 		<div id="message" class="${message.level}">${message.message}</div>
 	</c:if>
-	<table width="100%" class="need-border">
-		<thead>
-			<tr>
-				<th>ID</th>
-				<th>DID</th>
-				<th>名称</th>
-				<th>KEY</th>
-				<th>版本号</th>
-				<th>XML</th>
-				<th>图片</th>
-				<th>操作</th>
-			</tr>
-		</thead>
-		<tbody>
-			<c:forEach items="${processes }" var="process">
+	<div>
+		<div class="txt_title">
+			流程管理
+		</div>
+	
+		<div style="" class="toolbg toolbgline toolheight nowrap">
+			<div class="nowrap left">
+			</div>
+			<div class="right">
+				<!--页码 -->&nbsp;
+			</div>
+		</div>
+	
+		<table  class="O2" cellspacing="0" cellpadding="0">
+			<thead>
 				<tr>
-					<td>${process.id }</td>
-					<td>${process.deploymentId }</td>
-					<td>${process.name }</td>
-					<td>${process.key }</td>
-					<td>${process.version }</td>
-					<td><a target="_blank" href='${ctx }/workflow/manage/${process.deploymentId}/resource?resourceName=${process.resourceName }'>${process.resourceName }</a></td>
-					<td><a target="_blank" href='${ctx }/workflow/manage/${process.deploymentId}/resource?resourceName=${process.diagramResourceName }'>${process.diagramResourceName }</a></td>
-					<td>
-						<button class="btn_delete" param='{"deploymentId":"${process.deploymentId}"}' >删除</button>
-						<button class="btn_start" param='{"processDefinitionId":"${process.id }"}' >启动</button>
-					</td>
+					<th class="noborder">ID</th>
+					<th class="title">DID</th>
+					<th class="title">名称</th>
+					<th class="title">KEY</th>
+					<th class="title">版本号</th>
+					<th class="title">XML</th>
+					<th class="title">图片</th>
+					<th class="title">操作</th>
 				</tr>
-			</c:forEach>
-		</tbody>
-	</table>
+			</thead>
+			<tbody>
+				<c:forEach items="${processes }" var="process">
+					<tr>
+						<td>${process.id }</td>
+						<td>${process.deploymentId }</td>
+						<td>${process.name }</td>
+						<td>${process.key }</td>
+						<td>${process.version }</td>
+						<td><a target="_blank" href='${ctx }/workflow/manage/${process.deploymentId}/resource?resourceName=${process.resourceName }'>${process.resourceName }</a></td>
+						<td><a target="_blank" href='${ctx }/workflow/manage/${process.deploymentId}/resource?resourceName=${process.diagramResourceName }'>${process.diagramResourceName }</a></td>
+						<td>
+							<button class="btn_delete" param='{"deploymentId":"${process.deploymentId}"}' >删除</button>
+							<button class="btn_start" param='{"processDefinitionId":"${process.id }"}' >启动</button>
+						</td>
+					</tr>
+				</c:forEach>
+			</tbody>
+		</table>
+	
+		<div style="" class="toolbg toolbgline toolheight nowrap">
+			<div class="nowrap left">
+			</div>
+			<div class="right">
+				<!--页码 -->&nbsp;
+			</div>
+		</div>
+	</div>
 </body>
 </html>

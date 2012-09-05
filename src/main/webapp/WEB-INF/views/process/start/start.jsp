@@ -2,21 +2,14 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
-<c:set var="ctx" value="${pageContext.request.contextPath}"/>
-
 <!DOCTYPE html>
 <html>
 <head>
-<title>任务中心</title>
-<meta http-equiv="content-type" content="text/html; charset=UTF-8">
-<meta http-equiv="cache-control" content="no-cache" />
-<meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT" />
-<meta http-equiv="pragma" content="no-cache" />
+	<title>发起流程</title>
+	<%@ include file="/common/setting.jsp" %>
+	<%@ include file="/common/meta.jsp" %>
+	<%@ include file="/common/include.jsp" %>
 
-<link href="${ctx}/quir/frame.css" type="text/css"  rel="stylesheet">
-<link href="${ctx}/quir/extend.css" type="text/css"  rel="stylesheet">
- 	<!-- 暂时引入jquery -->
- 	<script src="/bp/js/common/jquery.js" type="text/javascript"></script>
     <script type="text/javascript">
     $(function() {
     	$('.btn_start').click(function(){
@@ -41,7 +34,7 @@
 		<div id="message" class="${message.level}">${message.message}</div>
 	</c:if>
 
-	<div id="taskcenter">
+	<div>
 		<div class="txt_title">
 			发起流程<span class="f_size normal black" id="_ut"> (共<span id="_ut_c">${fn:length(processDefinitionBeans)}</span>个)</span>
 		</div>
