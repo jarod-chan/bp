@@ -21,6 +21,7 @@
 	    	
 	    	
 	    	$('.btn_trace').click(function(){
+	    		if($("#easyDialogBox").is(":visible")){easyDialog.close();}
 	    		var param=jQuery.parseJSON($(this).attr("param"));
 				$("#processImg").attr("src",'${ctx}/workflow/cm/process/'+param.processDefinitionId+'.png');
 				$.getJSON('${ctx}/workflow/cm/process/activity/' + param.processInstanceId+'.json', function(info) {
@@ -75,8 +76,6 @@
 						<td>${processInstance.suspended }</td>
 						<td>
 							<button class="btn_trace" param='{"processInstanceId":"${processInstance.processInstanceId }","processDefinitionId":"${processInstance.processDefinitionId }"}'>跟踪流程</button>
-							
-							 <a target="_blank" href='${ctx }/workflow/cm/process/${processInstance.processDefinitionId }.png'>流程图</a>
 						</td>
 					</tr>
 				</c:forEach>

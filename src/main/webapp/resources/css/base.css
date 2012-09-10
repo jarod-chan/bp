@@ -4,7 +4,7 @@ html,body,p,ul,li,h1,input,form {
 }
 
 body,input {
-	font: 12px Verdana, Arial, Helvetica, sans-serif;
+	font-family: "Helvetica Neue","lucida Grande",Verdana;
 }
 
 body {

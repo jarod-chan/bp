@@ -52,7 +52,6 @@ public class LoginCtl {
 			return "redirect:/login";
 		}
 		initLoginState(userId);
-		//return "redirect:/index";
 		return "redirect:/frame";
 	}
 

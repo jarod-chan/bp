@@ -1,4 +1,4 @@
-package cn.fyg.bp.interfaces.web.module.frame;
+package cn.fyg.bp.interfaces.web.module.system.frame;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @RequestMapping("/frame")
 public class FrameCtl {
 	
-	private static final String PATH = "frame/";
+	private static final String PATH = "system/frame/";
 	private interface Page {
 		String FRAME = PATH + "frame";
 		String SUB=PATH + "sub";

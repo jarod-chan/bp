@@ -25,7 +25,7 @@
 						<b id="useralias">${user.realname }</b><span class="pointer" id="useraddrcontainer">&lt;<span title="系统账号" id="useraddr">${user.username}</span>&gt;</span>
 						<br>
 						<span class="addrtitle">
-							<a target="mainFrame" href="frame/sub">个人首页</a>&nbsp;|&nbsp;<a href="/${ctx}">安全退出</a>
+							<a target="mainFrame" href="first">个人首页</a>&nbsp;|&nbsp;<a href="/${ctx}">安全退出</a>
 						</span>
 					</div>
 				</div>

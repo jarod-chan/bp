@@ -11,13 +11,13 @@
 </head>
 <body >
 
-<center>
-	<div style="margin-top: 100px;color: blue;font-weight: bold;font-size: 30px;">
+
+	<div style="margin: 200px auto 0; color: blue;font-weight: bold;font-size: 30px; width: 400px;">
 		编码中··· ···
 		<br>
 		coding··· ···
 	</div>
-</center>
+
 
 </body>
 </html>
