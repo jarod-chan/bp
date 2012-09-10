@@ -1,0 +1,3 @@
+
+easydialog-v2.0
+一个js对话框插件

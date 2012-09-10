@@ -5,16 +5,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>QUI </title>
-	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
-	<meta http-equiv="cache-control" content="no-cache" />
-	<meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT" />
-	<meta http-equiv="pragma" content="no-cache" />
- 	
- 	<link href="${ctx}/quir/frame.css" type="text/css"  rel="stylesheet">
- 	<link href="${ctx}/quir/extend.css" type="text/css"  rel="stylesheet">
- 	<!-- 暂时引入jquery -->
- 	<script src="/bp/js/common/jquery.js" type="text/javascript"></script>
+	<title>合同编辑</title>
+	<%@ include file="/common/setting.jsp" %>
+	<%@ include file="/common/meta.jsp" %>
+	<%@ include file="/common/include.jsp" %>	
 
     <script type="text/javascript">
     $(function() {	

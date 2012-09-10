@@ -17,7 +17,7 @@
 		<div class="topdata">
 	 		<div id="logotips" class="lgoo">
 				<a hidefocus="" target="mainFrame" href="#" style="width:215px; height:60px;" class="imglogo pointer skinlogo">
-					<img height="60" src="quir/logo_0_00aa5cc.gif" id="imglogo" stylenum="0" logotitle="" e="imglogo" t="3" title="">
+					<img height="60" src="resources/img/logo_0_00aa5cc.gif" id="imglogo" stylenum="0" logotitle="" e="imglogo" t="3" title="">
 				</a>
 				
 				 <div class="switch" style="display: inline;">
