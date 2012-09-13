@@ -1,0 +1,3 @@
+
+1.子流程处理问题？
+Execution是ProcessInstance的父类，当前流程是子流程时，ProcessInstanceId和id不同。不是字流程的时候，两个相同。

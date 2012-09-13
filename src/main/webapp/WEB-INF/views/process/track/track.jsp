@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>流程运行</title>
+	<title>流程跟踪</title>
 	<%@ include file="/common/setting.jsp" %>
 	<%@ include file="/common/meta.jsp" %>
 	<%@ include file="/common/include.jsp" %>	
@@ -46,7 +46,7 @@
 	</c:if>
 	<div>
 		<div class="txt_title">
-			流程管理
+			流程跟踪
 		</div>
 	
 		<div style="" class="toolbg toolbgline toolheight nowrap">
@@ -68,7 +68,7 @@
 				</tr>
 			</thead>
 			<tbody>
-				<c:forEach items="${processInstances}" var="processInstance">
+				<c:forEach items="${processInstanceList}" var="processInstance">
 					<tr>
 						<td>${processInstance.id }</td>
 						<td>${processInstance.processInstanceId }</td>

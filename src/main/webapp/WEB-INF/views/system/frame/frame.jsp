@@ -25,7 +25,7 @@
 						<b id="useralias">${user.realname }</b><span class="pointer" id="useraddrcontainer">&lt;<span title="系统账号" id="useraddr">${user.username}</span>&gt;</span>
 						<br>
 						<span class="addrtitle">
-							<a target="mainFrame" href="first">个人首页</a>&nbsp;|&nbsp;<a href="/${ctx}">安全退出</a>
+							<a target="mainFrame" href="first">个人首页</a>&nbsp;|&nbsp;<a href="login">安全退出</a>
 						</span>
 					</div>
 				</div>
@@ -52,7 +52,7 @@
 					<input type="button" disabled="" class="composebtn">
 				</li>
 				<li class="addrpart fs">
-					<a target="mainFrame" href="frame/sub" >流程跟踪</a>
+					<a target="mainFrame" href="process/track" >流程跟踪</a>
 					<input type="button" disabled="" class="addrbtn">
 				</li> 
 			</ul>
@@ -94,7 +94,7 @@
 	</div>
 
 	<div id="mainFrameContainer">
-		<iframe id="mainFrame" scrolling="auto" frameborder="no" hidefocus="" name="mainFrame" src="taskcenter" onload="">
+		<iframe id="mainFrame" scrolling="auto" frameborder="no" hidefocus="" name="mainFrame" src="process/task" onload="">
 		</iframe>
 	</div>
 

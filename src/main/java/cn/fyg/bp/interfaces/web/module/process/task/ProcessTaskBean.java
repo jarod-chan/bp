@@ -1,13 +1,13 @@
 package cn.fyg.bp.interfaces.web.module.process.task;
 
-import org.activiti.engine.runtime.ProcessInstance;
+import org.activiti.engine.runtime.Execution;
 import org.activiti.engine.task.Task;
 
 public class ProcessTaskBean {
 	
 	private Task task;
 	
-	private ProcessInstance processInstance;
+	private Execution execution;
 	
 	private String formKey;
 	
@@ -21,12 +21,13 @@ public class ProcessTaskBean {
 		this.task = task;
 	}
 
-	public ProcessInstance getProcessInstance() {
-		return processInstance;
+
+	public Execution getExecution() {
+		return execution;
 	}
 
-	public void setProcessInstance(ProcessInstance processInstance) {
-		this.processInstance = processInstance;
+	public void setExecution(Execution execution) {
+		this.execution = execution;
 	}
 
 	public String getFormKey() {

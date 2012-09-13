@@ -26,7 +26,7 @@
     });
     </script>
 </head>
-<body>
+<body class="tbody">
 	<c:if test="${not empty message}">
 		<div id="message" class="${message.level}">${message.message}</div>
 	</c:if>
@@ -46,13 +46,13 @@
 		<table  class="O2" cellspacing="0" cellpadding="0">
 			<thead>
 				<tr>
-					<th class="noborder">ID</th>
-					<th class="title">DID</th>
-					<th class="title">名称</th>
-					<th class="title">KEY</th>
-					<th class="title">版本号</th>
+					<th class="noborder">id</th>
+					<th class="title">部署id【deploymentId】</th>
+					<th class="title">名称【name】</th>
+					<th class="title">关键字【KEY】</th>
+					<th class="title">版本【version】</th>
 					<th class="title">XML</th>
-					<th class="title">图片</th>
+					<th class="title">image</th>
 					<th class="title">操作</th>
 				</tr>
 			</thead>
