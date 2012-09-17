@@ -46,7 +46,7 @@ public class GeneralCtl {
 		//TODO 跟踪流程逻辑
 		User user=sessionUtil.getValue("user");
 		Task task = taskService.createTaskQuery().taskId(taskId).singleResult();
-		usertrackService.trackProcessInstance(user.getUsername(),task.getProcessInstanceId());
+		usertrackService.trackProcessInstance(user.getKey(),task.getProcessInstanceId());
 		
 		
 		taskService.complete(taskId);

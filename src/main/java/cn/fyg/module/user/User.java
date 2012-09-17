@@ -3,13 +3,9 @@ package cn.fyg.module.user;
 
 public interface User{
 
-	String getId();
+	String getKey();
 
-	void setId(String id);
-
-	String getUsername();
-
-	void setUsername(String username);
+	void setKey(String key);
 
 	String getRealname();
 

@@ -22,7 +22,7 @@
 				
 				 <div class="switch" style="display: inline;">
 					<div class="left" style="margin-top:1px;display:inline;">
-						<b id="useralias">${user.realname }</b><span class="pointer" id="useraddrcontainer">&lt;<span title="系统账号" id="useraddr">${user.username}</span>&gt;</span>
+						<b id="useralias">${user.realname }</b><span class="pointer" id="useraddrcontainer">&lt;<span title="系统账号" id="useraddr">${user.key}</span>&gt;</span>
 						<br>
 						<span class="addrtitle">
 							<a target="mainFrame" href="first">个人首页</a>&nbsp;|&nbsp;<a href="login">安全退出</a>

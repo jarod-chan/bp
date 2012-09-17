@@ -71,7 +71,7 @@ public class ContractCtl {
 		Task task = taskService.createTaskQuery().taskId(taskId).singleResult();
 		
 		User user=sessionUtil.getValue("user");
-		usertrackService.trackProcessInstance(user.getUsername(),task.getProcessInstanceId());
+		usertrackService.trackProcessInstance(user.getKey(),task.getProcessInstanceId());
 		
 		runtimeService.setVariableLocal(task.getExecutionId(), "businessId", contract.getId());
 		redirectAttributes
@@ -88,7 +88,7 @@ public class ContractCtl {
 		Task task = taskService.createTaskQuery().taskId(taskId).singleResult();
 		
 		User user=sessionUtil.getValue("user");
-		usertrackService.trackProcessInstance(user.getUsername(),task.getProcessInstanceId());
+		usertrackService.trackProcessInstance(user.getKey(),task.getProcessInstanceId());
 		
 		runtimeService.setVariableLocal(task.getExecutionId(), "businessId", contract.getId());
 		taskService.complete(taskId);
@@ -110,7 +110,7 @@ public class ContractCtl {
 	public String check(RedirectAttributes redirectAttributes,@RequestParam("leaderPass")Boolean leaderPass,@RequestParam(value="taskId",required=false)String taskId){
 		User user=sessionUtil.getValue("user");
 		Task task = taskService.createTaskQuery().taskId(taskId).singleResult();
-		usertrackService.trackProcessInstance(user.getUsername(),task.getProcessInstanceId());
+		usertrackService.trackProcessInstance(user.getKey(),task.getProcessInstanceId());
 		
 		
 		Map<String, Object> variableMap = new HashMap<String, Object>();
@@ -134,11 +134,11 @@ public class ContractCtl {
 		contract = contractService.save(contract);
 		Map<String, Object> variableMap = new HashMap<String, Object>();
 		variableMap.put("businessId", contract.getId());
-		variableMap.put("applyUser", user.getUsername());
-		identityService.setAuthenticatedUserId(user.getUsername());
+		variableMap.put("applyUser", user.getKey());
+		identityService.setAuthenticatedUserId(user.getKey());
 		ProcessInstance processInstance = runtimeService.startProcessInstanceByKey(processDefinitionKey, variableMap);
 		redirectAttributes.addFlashAttribute(Constant.MESSAGE_NAME, Message.create().info().message("流程[%s]已启动！",processDefinitionKey));
-		usertrackService.trackProcessInstance(user.getUsername(),processInstance.getProcessInstanceId());
+		usertrackService.trackProcessInstance(user.getKey(),processInstance.getProcessInstanceId());
 		return "redirect:/process/start";
 	}
 }

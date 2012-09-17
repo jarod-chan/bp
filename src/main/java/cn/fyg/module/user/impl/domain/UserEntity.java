@@ -1,14 +1,12 @@
 package cn.fyg.module.user.impl.domain;
 
+import java.util.UUID;
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.PrePersist;
 import javax.persistence.Transient;
-
-import org.apache.commons.lang.StringUtils;
-
-import cn.fyg.module.user.User;
 
 import net.sf.oval.constraint.Email;
 import net.sf.oval.constraint.Length;
@@ -16,17 +14,18 @@ import net.sf.oval.constraint.MatchPattern;
 import net.sf.oval.constraint.NotNull;
 import net.sf.oval.constraint.ValidateWithMethod;
 
+import org.apache.commons.lang.StringUtils;
+
+import cn.fyg.module.user.User;
+
 @Entity
-public class UserEntity implements User {
-	
+public class UserEntity implements User { 
+
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long id; 
-	
-	@NotNull(message="用户名不能为空")
+	@Column(name="key_")
 	@Length(min=2,max=10,message="用户名长度在{min}和{max}之间")
-	private String username;//用户名
-	
+	private String key;//用户编码
+
 	@NotNull(message="真实姓名不能为空")
 	@Length(min=2,max=10,message="真实姓名长度在{min}和{max}之间")
 	private String realname;//真实姓名
@@ -40,16 +39,23 @@ public class UserEntity implements User {
 	
 	private String password;//用户密码
 
-	private Boolean enabled;
+	private Boolean enabled;//是否有效
 	
+	private String uuid;//用于代替id，不作为主键
+	
+	@PrePersist
+	public void prePersist(){
+        this.uuid=UUID.randomUUID().toString();
+    }
+
 	@Transient
 	@ValidateWithMethod(methodName = "checkTempPasswor", parameterType = String.class,message="密码长度必须在6和12之间")
-	private String tempPassword;
+	private String tempPassword;//临时保存用户密码，为编码加密预留接口
 	
 	
 	public boolean checkTempPasswor(String tempPassword){
 		boolean result=false;
-		if(this.id==null){
+		if(this.uuid==null){
 			result=checkBeforeCreate(tempPassword);
 		}else{
 			result=checkBeforeUpdate(tempPassword);
@@ -101,26 +107,12 @@ public class UserEntity implements User {
 		return this.password.equals(comparePassword);
 	}
 	
-
-	public String getId() {
-		if(id==null) return null;
-		return id.toString();
+	public String getKey() {
+		return key;
 	}
 
-	public void setId(String id) {
-		if(id==null){
-			this.id=null;
-			return;
-		}
-		this.id = Long.valueOf(id);
-	}
-
-	public String getUsername() {
-		return username;
-	}
-
-	public void setUsername(String username) {
-		this.username = username;
+	public void setKey(String key) {
+		this.key = key;
 	}
 
 	public String getRealname() {
@@ -167,7 +159,13 @@ public class UserEntity implements User {
 	public boolean isEnabled() {
 		return this.enabled.booleanValue();
 	}
-	
-	
+
+	public String getUuid() {
+		return uuid;
+	}
+
+	public void setUuid(String uuid) {
+		this.uuid = uuid;
+	}
 	
 }
