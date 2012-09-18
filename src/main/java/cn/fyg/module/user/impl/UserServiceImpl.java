@@ -17,7 +17,7 @@ import cn.fyg.module.user.impl.domain.UserEntityFactory;
 import cn.fyg.module.user.impl.domain.UserEntityRepository;
 import cn.fyg.module.user.impl.domain.UserEntityValidator;
 
-@Service
+@Service("userService")
 public class UserServiceImpl implements UserService{
 	
 	@Resource

@@ -19,7 +19,7 @@ import cn.fyg.module.group.impl.domain.GroupRepository;
 import cn.fyg.module.group.impl.domain.MembershipEntity;
 import cn.fyg.module.group.impl.domain.MembershipRepository;
 
-@Service
+@Service("groupService")
 public class GroupServiceImpl implements GroupService {
 	
 	public static final String SEPARATE="."; 
