@@ -1,3 +1,10 @@
 
 1.子流程处理问题？
 Execution是ProcessInstance的父类，当前流程是子流程时，ProcessInstanceId和id不同。不是字流程的时候，两个相同。
+
+2.activiti 5.10  的邮件发送没有启用ssl，自己编译一个类，替换MailActivityBehavior.java 类
+在176行  修改如下
+
+    email.setSSL(true);
+    email.setTLS(processEngineConfiguration.getMailServerUseTLS());
+可以使用ssl

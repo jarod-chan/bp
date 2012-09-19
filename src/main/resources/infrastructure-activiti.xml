@@ -18,6 +18,11 @@
 		<property name="transactionManager" ref="transactionManager" />
 		<property name="databaseSchemaUpdate" value="true" />
 		<property name="jobExecutorActivate" value="false" />
+		<property name="mailServerHost" value="${email.host}"/>
+		<property name="mailServerPort" value="${email.port}"/>
+		<property name="mailServerUsername" value="${email.username}"/>
+		<property name="mailServerPassword" value="${email.password}"/>
+		<property name="mailServerDefaultFrom" value="${email.systemEmail}"/>
 	</bean>
 
 
