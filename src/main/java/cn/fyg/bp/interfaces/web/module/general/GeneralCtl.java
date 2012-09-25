@@ -11,8 +11,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import cn.fyg.bp.application.UsertrackService;
 import cn.fyg.bp.interfaces.web.shared.message.Message;
+import cn.fyg.bp.interfaces.web.shared.session.SessionUtil;
 import cn.fyg.bp.interfaces.web.shared.tool.Constant;
+import cn.fyg.module.user.User;
 
 @Controller
 @RequestMapping("/general")
@@ -25,6 +28,10 @@ public class GeneralCtl {
 	
 	@Autowired
 	TaskService taskService;
+	@Autowired
+	UsertrackService usertrackService;
+	@Autowired
+	SessionUtil sessionUtil;
 	
 	@RequestMapping(value="/task",method=RequestMethod.GET)
 	public String toTask(Map<String,Object> map,@RequestParam(value="taskId",required=false)String taskId){
@@ -35,6 +42,13 @@ public class GeneralCtl {
 	
 	@RequestMapping(value="/complete",method=RequestMethod.POST)
 	public String complete(RedirectAttributes redirectAttributes,@RequestParam(value="taskId",required=false)String taskId){
+	
+		//TODO 跟踪流程逻辑
+		User user=sessionUtil.getValue("user");
+		Task task = taskService.createTaskQuery().taskId(taskId).singleResult();
+		usertrackService.trackProcessInstance(user.getKey(),task.getProcessInstanceId());
+		
+		
 		taskService.complete(taskId);
 		redirectAttributes.addFlashAttribute(Constant.MESSAGE_NAME, Message.create().info().message("任务完成！"));
 		return "redirect:/process/task";

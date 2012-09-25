@@ -6,6 +6,7 @@ import java.util.Map;
 import org.activiti.engine.IdentityService;
 import org.activiti.engine.RuntimeService;
 import org.activiti.engine.TaskService;
+import org.activiti.engine.runtime.ProcessInstance;
 import org.activiti.engine.task.Task;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import cn.fyg.bp.application.ContractService;
+import cn.fyg.bp.application.UsertrackService;
 import cn.fyg.bp.domain.model.contract.Contract;
 import cn.fyg.bp.domain.model.contract.ContractFactory;
 import cn.fyg.bp.interfaces.web.shared.message.Message;
@@ -43,6 +45,8 @@ public class ContractCtl {
 	@Autowired
 	IdentityService identityService;
 	@Autowired
+	UsertrackService usertrackService;
+	@Autowired
 	SessionUtil sessionUtil;
 	
 	@RequestMapping(value="",method=RequestMethod.GET)
@@ -65,11 +69,16 @@ public class ContractCtl {
 	public String save(Contract contract,RedirectAttributes redirectAttributes,@RequestParam(value="taskId",required=false)String taskId){
 		contract = contractService.save(contract);
 		Task task = taskService.createTaskQuery().taskId(taskId).singleResult();
+		
+		User user=sessionUtil.getValue("user");
+		usertrackService.trackProcessInstance(user.getKey(),task.getProcessInstanceId());
+		
 		runtimeService.setVariableLocal(task.getExecutionId(), "businessId", contract.getId());
 		redirectAttributes
 			.addAttribute("businessId", contract.getId())
 			.addAttribute("taskId", taskId)
 			.addFlashAttribute(Constant.MESSAGE_NAME, Message.create().info().message("合同保存成功！"));
+		
 		return "redirect:/contract/{businessId}?taskId={taskId}";
 	}
 	
@@ -77,9 +86,14 @@ public class ContractCtl {
 	public String commit(Contract contract,RedirectAttributes redirectAttributes,@RequestParam(value="taskId",required=false)String taskId){
 		contract = contractService.save(contract);
 		Task task = taskService.createTaskQuery().taskId(taskId).singleResult();
+		
+		User user=sessionUtil.getValue("user");
+		usertrackService.trackProcessInstance(user.getKey(),task.getProcessInstanceId());
+		
 		runtimeService.setVariableLocal(task.getExecutionId(), "businessId", contract.getId());
 		taskService.complete(taskId);
 		redirectAttributes.addFlashAttribute(Constant.MESSAGE_NAME, Message.create().info().message("合同提交成功！"));
+		
 		return "redirect:/process/task";
 	}
 	
@@ -94,6 +108,11 @@ public class ContractCtl {
 	
 	@RequestMapping(value="check",method=RequestMethod.POST)
 	public String check(RedirectAttributes redirectAttributes,@RequestParam("leaderPass")Boolean leaderPass,@RequestParam(value="taskId",required=false)String taskId){
+		User user=sessionUtil.getValue("user");
+		Task task = taskService.createTaskQuery().taskId(taskId).singleResult();
+		usertrackService.trackProcessInstance(user.getKey(),task.getProcessInstanceId());
+		
+		
 		Map<String, Object> variableMap = new HashMap<String, Object>();
 		variableMap.put("leaderPass", leaderPass);
 		taskService.complete(taskId, variableMap);
@@ -115,10 +134,11 @@ public class ContractCtl {
 		contract = contractService.save(contract);
 		Map<String, Object> variableMap = new HashMap<String, Object>();
 		variableMap.put("businessId", contract.getId());
-		variableMap.put("applyUser", user.getUsername());
-		identityService.setAuthenticatedUserId(user.getUsername());
-		runtimeService.startProcessInstanceByKey(processDefinitionKey, variableMap);
+		variableMap.put("applyUser", user.getKey());
+		identityService.setAuthenticatedUserId(user.getKey());
+		ProcessInstance processInstance = runtimeService.startProcessInstanceByKey(processDefinitionKey, variableMap);
 		redirectAttributes.addFlashAttribute(Constant.MESSAGE_NAME, Message.create().info().message("流程[%s]已启动！",processDefinitionKey));
+		usertrackService.trackProcessInstance(user.getKey(),processInstance.getProcessInstanceId());
 		return "redirect:/process/start";
 	}
 }

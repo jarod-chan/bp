@@ -40,24 +40,23 @@ public class LoginCtl {
 	
 	@RequestMapping(value = "", method = RequestMethod.POST)
 	public String login(LoginBean loginBean,RedirectAttributes redirectAttributes) {
-		String userId=null;
+		String userKey=null;
 		try{
-			userId=userService.login(loginBean.getUsername(), loginBean.getPassword());
+			userKey=userService.login(loginBean.getUsername(), loginBean.getPassword());
 		}catch(UserException userException){
 			logger.error(String.format("key:%s password:%s login fail", loginBean.getUsername(),loginBean.getPassword()));	
 		}
-		if(userId==null){
+		if(userKey==null){
 			redirectAttributes.addFlashAttribute("loginBean", loginBean);
 			redirectAttributes.addFlashAttribute(Constant.MESSAGE_NAME, "用户名或者密码错误！");
 			return "redirect:/login";
 		}
-		initLoginState(userId);
-		//return "redirect:/index";
+		initLoginState(userKey);
 		return "redirect:/frame";
 	}
 
-	private void initLoginState(String userId) {
-		User user=userService.findById(userId);
+	private void initLoginState(String userKey) {
+		User user=userService.findUser(userKey);
 		sessionUtil.invalidate();
 		sessionUtil.setValue("user", user);
 		filterAdmin(user);
@@ -68,7 +67,7 @@ public class LoginCtl {
 	 * @param user
 	 */
 	private void filterAdmin(User user) {
-		if(user.getUsername().equals("admin")){
+		if(user.getKey().equals("admin")){
 			sessionUtil.setValue("isAdmin", Boolean.TRUE);
 		}else{
 			sessionUtil.setValue("isAdmin", Boolean.FALSE);

@@ -41,6 +41,32 @@ public class WorkflowFacade {
 	IdentityService identityService;
 	@Autowired
 	TaskService taskService;
+	
+	public Map<String,Object> getCurrentActivity(String processInstanceId)throws Exception{
+		Execution execution = runtimeService.createExecutionQuery().executionId(processInstanceId).singleResult();//执行实例
+		Object property = PropertyUtils.getProperty(execution, "activityId");
+		String activityId = "";
+		if (property != null) {
+			activityId = property.toString();
+		}
+		ProcessInstance processInstance = runtimeService.createProcessInstanceQuery().processInstanceId(processInstanceId)
+				.singleResult();
+		ProcessDefinitionEntity processDefinition = (ProcessDefinitionEntity) ((RepositoryServiceImpl) repositoryService)
+				.getDeployedProcessDefinition(processInstance.getProcessDefinitionId());
+		List<ActivityImpl> activitiList = processDefinition.getActivities();//获得当前任务的所有节点
+		Map<String,Object> result=new HashMap<String,Object>();
+		for (ActivityImpl activityImpl : activitiList) {
+			if(activityImpl.getId().equals(activityId)){
+				result.put("x", activityImpl.getX());
+				result.put("y", activityImpl.getY());
+				result.put("width", activityImpl.getWidth());
+				result.put("height", activityImpl.getHeight());
+			}
+		}
+		return result;
+	}
+	
+	
 
 	public List<Map<String, Object>> traceProcess(String processInstanceId)throws Exception {
 		Execution execution = runtimeService.createExecutionQuery().executionId(processInstanceId).singleResult();//执行实例

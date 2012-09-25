@@ -9,6 +9,12 @@
 	<%@ include file="/common/setting.jsp" %>
 	<%@ include file="/common/meta.jsp" %>
 	<%@ include file="/common/include.jsp" %>
+	
+	<style type="text/css">
+		table.O2 tbody tr:hover {
+			cursor: pointer;
+		}
+	</style>
 
  	<script type="text/javascript">
 	    $(function() {
@@ -61,7 +67,8 @@
 		<table class="O2" cellspacing="0" cellpadding="0" >
 			<thead>
 				<tr>
-					<th class="noborder">流程id</th>
+					<th class="noborder">id</th>
+					<th class="title">流程Id</th>
 					<th class="title">任务Id</th>
 					<th class="title">任务名称</th>
 					<th class="title">表单</th>
@@ -72,7 +79,8 @@
 			<tbody>
 				<c:forEach var="processTask" items="${processTasks}">
 					<tr>
-						<td>${processTask.processInstance.id }</td>
+						<td>${processTask.execution.id }</td>
+						<td>${processTask.execution.processInstanceId }</td>
 						<td>${processTask.task.id }</td>
 						<td>${processTask.task.name }</td>
 						<td>${processTask.formKey}</td>

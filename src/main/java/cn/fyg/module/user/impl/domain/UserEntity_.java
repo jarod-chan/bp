@@ -8,13 +8,13 @@ import javax.persistence.metamodel.StaticMetamodel;
 @StaticMetamodel(UserEntity.class)
 public abstract class UserEntity_ {
 
-	public static volatile SingularAttribute<UserEntity, Long> id;
 	public static volatile SingularAttribute<UserEntity, Boolean> enabled;
-	public static volatile SingularAttribute<UserEntity, String> username;
 	public static volatile SingularAttribute<UserEntity, String> email;
 	public static volatile SingularAttribute<UserEntity, String> cellphone;
+	public static volatile SingularAttribute<UserEntity, String> uuid;
 	public static volatile SingularAttribute<UserEntity, String> realname;
 	public static volatile SingularAttribute<UserEntity, String> password;
+	public static volatile SingularAttribute<UserEntity, String> key;
 
 }
 

@@ -51,7 +51,7 @@ public class StartCtl {
 	public String start(@PathVariable("key")String key,RedirectAttributes redirectAttributes){
 		try {			
 			User user=sessionUtil.getValue("user");
-			identityService.setAuthenticatedUserId(user.getUsername());
+			identityService.setAuthenticatedUserId(user.getKey());
 			runtimeService.startProcessInstanceByKey(key);
 		} catch (ActivitiException e) {
 			logger.error("process start fail by key:[]", key);

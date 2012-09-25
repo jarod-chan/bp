@@ -8,10 +8,11 @@ import javax.persistence.metamodel.StaticMetamodel;
 @StaticMetamodel(GroupEntity.class)
 public abstract class GroupEntity_ {
 
-	public static volatile SingularAttribute<GroupEntity, String> Key;
 	public static volatile SingularAttribute<GroupEntity, String> name;
 	public static volatile SingularAttribute<GroupEntity, GroupEntity> parent;
+	public static volatile SingularAttribute<GroupEntity, String> uuid;
 	public static volatile SingularAttribute<GroupEntity, String> code;
+	public static volatile SingularAttribute<GroupEntity, String> key;
 
 }
 

@@ -1,36 +1,99 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<%@ page language="java" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html>
 <head>
-	<%@ include file="/common/global.jsp"%>
 	<title>方远房产流程系统</title>
+	<%@ include file="/common/setting.jsp" %>
 	<%@ include file="/common/meta.jsp" %>
-	<%@ include file="/common/include-jquery-ui-theme.jsp" %>
-    <%@ include file="/common/include-base-styles.jsp" %>   
-    <script src="${ctx }/js/common/jquery.js" type="text/javascript"></script>
-    <script src="${ctx }/js/common/plugins/jui/jquery-ui.min.js" type="text/javascript"></script>
-    <style>
-    	#draggable { top:150px; width: 400px;  padding: 0.4em; position: relative; }
-    	#draggable h3 { margin: 0; padding: 0.5em; text-align: center; }
-    	button {width: 100px;}
-    </style>
-    <script type="text/javascript">
+	<%@ include file="/common/base.jsp" %>
+	
+	<style>
+	.container {
+		margin: 200px auto 0;
+		width: 320px;
+		color: #444;
+		border: 3px solid rgba(0, 0, 0, 0);
+		-webkit-border-radius: 5px;
+		-moz-border-radius: 5px;
+		border-radius: 5px;
+		-webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+		-moz-box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+		box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+		font-size: 15px;
+	}
+	
+	.container div {
+		text-align: center;
+	}
+	
+	.container .logodiv {
+		-webkit-border-radius: 4px;
+		-moz-border-radius: 4px;
+		border-radius: 4px;
+		background: #fff;
+		border: 1px solid #e5e5e5;
+	}
+	
+	.logodiv .logo_title {
+		height: 30px;
+		line-height: 30px;
+		overflow: hidden;
+		color: #666;
+		padding: 0 10px;
+		font-size: 16px;
+		border-bottom: 1px solid #e5e5e5;
+		background: #f7f7f7;
+		border-radius: 4px 4px 0 0;
+		font-weight: bold;
+	}
+	
+	.logodiv .logo_context div {
+		height: 25px;
+		line-height: 25px;
+	}
+	
+	.logodiv .logo_context #message {
+		color: #FF0000;
+	}
+	
+	.logodiv .logo_context #username,.logodiv .logo_context #password {
+		border: 1px solid #E5E5E5;
+		font-size: 15px;
+	}
+	
+	.logodiv .logo_footer div {
+		height: 25px;
+		line-height: 25px;
+	}
+	
+	.logodiv .logo_footer .logo_button {
+		height: 50px;
+	}
+	</style>
+	
+	<script type="text/javascript">
 		$(function() {
-			$('button').button();
-			$('#draggable').draggable();
+			
+			$('#login').click(function(){
+				var actionFrom=$("form");
+				actionFrom.submit();
+				return false;
+			});
+
 			$('#fetchpassword').click(function(){
 				return false;
 			});
-			setTimeout(function(){$("#message").hide('highlight',1000);},2000);
+			setTimeout(function(){$("#message").fadeOut(500);},2000);
 		});
 	</script>
 </head>
 
 <body>
-	<center>
-	<div id="draggable" class="ui-widget-content ui-corner-all" >
-		<h3 class="ui-state-default ui-corner-all">方远房产流程系统</h3>
+
+<%-- 	<div id="draggable" >
+		<h3>方远房产流程系统</h3>
 		<form action="${ctx}/login" method="post">
 			<div>
 				<div class="context">
@@ -41,7 +104,7 @@
 				</div>
 				<div class="context"  style="height: 20px;padding: 5px 0px; ">
 				<c:if test="${not empty message}" >
-					<div id="message" class="ui-state-error ui-corner-all" style="width: 200px;">
+					<div id="message" style="width: 200px;">
 						<p><span class="ui-icon ui-icon-alert" style=" float: left;margin-right:.3em;"></span><span style="float: left;">${message}</span></p>
 					</div>
 				</c:if>
@@ -52,7 +115,59 @@
 				</div>
 			</div>
 		</form>
+	</div> --%>
+
+<%--
+	<div class="container">
+		<div id="login" class="login_container">
+			<div class="login_box">
+				<form action="${ctx}/login" method="post">
+					<div class="logo_title">
+						<h1>方远房产业务流程系统</h1>
+					</div>
+					<div style="" class="login_box_msg" id="msgContainer"><c:if test="${not empty message}" ><div id="message">您还没有输入密码！</div></c:if></div>
+					<div class="context">
+						用户:<input type="text"     class="txt" name="username"  value="${loginBean.username}chen"  style="width:150px;"/> 
+					</div>
+					<div class="context">
+						密码:<input type="password" class="txt" name="password" value="1"   style="width:150px;"/>
+					</div>
+					<div class="context" >
+							<button type="submit" id="login"  >登录系统</button> <button type="button" id="fetchpassword" >取回密码</button>
+						   
+					</div>
+				</form>
+			</div>
+		</div>
 	</div>
-	</center>
+--%>
+	<form action="${ctx}/login" method="post">
+	<div class="container">
+		<div class="logodiv">
+			<div class="logo_title">
+				<span>方远房产业务流程系统</span>
+			</div>
+			<div class="logo_context">
+				<div>
+					<div id="message"><c:if test="${not empty message}" ><div id="message">${message}</div></c:if></div>
+				</div>
+				<div>
+					用户:<input type="text"     id="username" name="username"  value="${loginBean.username}chen" /> 
+				</div>
+				<div>
+					密码:<input type="password" id="password" name="password" value="1"  />
+				</div>
+			</div>
+			<div class="logo_footer">
+				<div><!-- 记住用户功能 --></div>
+				<div class="logo_button">
+					<button class="btn_normal" type="button" id="login"  >登录系统</button> 
+					<button class="btn_normal" type="button" id="fetchpassword" >取回密码</button>
+				</div>
+			</div>		
+		</div>
+	</div>
+	</form>
+
 </body>
 </html>

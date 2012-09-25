@@ -1,0 +1,5 @@
+
+easydialog-v2.0
+一个js对话框插件
+
+css  从外部映入的css样式临时文件

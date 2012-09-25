@@ -24,7 +24,7 @@ public class StartFacade {
 		for (ProcessDefinition processDefinition : processDefinitions) {
 			ProcessDefinitionBean processDefinitionBean = new ProcessDefinitionBean();
 			processDefinitionBean.setProcessDefinition(processDefinition);
-			String formKey=formService.getStartFormData(processDefinition.getId()).getFormKey();
+			String formKey=formService.getStartFormData(processDefinition.getId()).getFormKey(); 
 			processDefinitionBean.setFormKey(formKey);
 			processDefinitionBean.setIsStartform(StringUtils.isNotBlank(formKey));
 			result.add(processDefinitionBean);
