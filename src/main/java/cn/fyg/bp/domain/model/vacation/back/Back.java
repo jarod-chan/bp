@@ -1,4 +1,4 @@
-package cn.fyg.bp.domain.model.vacation.leave;
+package cn.fyg.bp.domain.model.vacation.back;
 
 import java.math.BigDecimal;
 import java.util.Date;
@@ -22,20 +22,22 @@ import javax.persistence.TemporalType;
 import cn.fyg.bp.domain.model.vacation.common.BusiState;
 import cn.fyg.bp.domain.model.vacation.common.Dayitem;
 import cn.fyg.bp.domain.model.vacation.common.LeaveType;
+import cn.fyg.bp.domain.model.vacation.leave.Leave;
 import cn.fyg.module.user.User;
 import cn.fyg.module.user.impl.domain.UserEntity;
 
-/**
- *请假业务
- */
 @Entity
-public class Leave {
+public class Back {
 	
-	public static final String BUSINESS_CODE="HR-QJ";
+	public static final String BUSINESS_CODE="HR-XJ";
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
+	
+	@ManyToOne
+	@JoinColumn(name="leave_id")
+	private Leave leave;
 	
 	@Column(unique=true)
 	private String no;//序号
@@ -71,18 +73,16 @@ public class Leave {
 	
 	@ManyToOne(targetEntity=UserEntity.class)
 	@JoinColumn(name="user_")
-	private User user;//请假人员
+	private User user;//销假人员
 	
 	@Column(name="date_")
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date date;//日期
 	
-	
 	@PrePersist
 	private void prePersist(){
 		this.date=new Date();
 	}
-	
 
 	public Long getId() {
 		return id;
@@ -90,6 +90,14 @@ public class Leave {
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public Leave getLeave() {
+		return leave;
+	}
+
+	public void setLeave(Leave leave) {
+		this.leave = leave;
 	}
 
 	public String getNo() {
@@ -116,11 +124,11 @@ public class Leave {
 		this.description = description;
 	}
 
-	public Dayitem getBegDayItem() {
+	public Dayitem getBegDayitem() {
 		return begDayitem;
 	}
 
-	public void setBegDayItem(Dayitem begDayitem) {
+	public void setBegDayitem(Dayitem begDayitem) {
 		this.begDayitem = begDayitem;
 	}
 
@@ -148,25 +156,13 @@ public class Leave {
 		this.acturlDay = acturlDay;
 	}
 
-	public Dayitem getBegDayitem() {
-		return begDayitem;
-	}
-
-
-	public void setBegDayitem(Dayitem begDayitem) {
-		this.begDayitem = begDayitem;
-	}
-
-
 	public BusiState getBusiState() {
 		return busiState;
 	}
 
-
 	public void setBusiState(BusiState busiState) {
 		this.busiState = busiState;
 	}
-
 
 	public User getUser() {
 		return user;
@@ -183,6 +179,6 @@ public class Leave {
 	public void setDate(Date date) {
 		this.date = date;
 	}
-
-
+	
+	
 }

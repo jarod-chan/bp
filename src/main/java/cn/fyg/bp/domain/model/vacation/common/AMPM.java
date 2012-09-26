@@ -1,4 +1,4 @@
-package cn.fyg.bp.domain.model.vacation.dayitem;
+package cn.fyg.bp.domain.model.vacation.common;
 
 import cn.fyg.bp.domain.model.shared.CommonEnum;
 

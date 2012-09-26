@@ -1,8 +1,8 @@
 package cn.fyg.bp.application;
 
+import cn.fyg.bp.domain.model.vacation.common.Dayitem;
 import cn.fyg.bp.domain.model.vacation.compdate.Compdate;
 import cn.fyg.bp.domain.model.vacation.compdate.DayResult;
-import cn.fyg.bp.domain.model.vacation.dayitem.Dayitem;
 
 public interface CompdateService {
 	

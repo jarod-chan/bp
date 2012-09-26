@@ -9,13 +9,15 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import cn.fyg.bp.application.CompdateService;
+import cn.fyg.bp.domain.model.vacation.back.Back;
+import cn.fyg.bp.domain.model.vacation.back.BackRepository;
+import cn.fyg.bp.domain.model.vacation.common.Dayitem;
 import cn.fyg.bp.domain.model.vacation.compdate.Compdate;
 import cn.fyg.bp.domain.model.vacation.compdate.CompdateFactory;
 import cn.fyg.bp.domain.model.vacation.compdate.CompdateRepository;
 import cn.fyg.bp.domain.model.vacation.compdate.Datastate;
 import cn.fyg.bp.domain.model.vacation.compdate.DayResult;
 import cn.fyg.bp.domain.model.vacation.compdate.WaitAction;
-import cn.fyg.bp.domain.model.vacation.dayitem.Dayitem;
 import cn.fyg.bp.domain.model.vacation.leave.Leave;
 import cn.fyg.bp.domain.model.vacation.leave.LeaveRepository;
 
@@ -26,6 +28,8 @@ public class CompdateServiceImpl implements CompdateService {
 	CompdateRepository compdateRepository;
 	@Autowired
 	LeaveRepository leaveRepository;
+	@Autowired
+	BackRepository backRepository;
 
 	@Override
 	@Transactional
@@ -62,11 +66,13 @@ public class CompdateServiceImpl implements CompdateService {
 			}
 			if(compdate.getDatastate()==Datastate.none && compdate.getWaitAction()==WaitAction.wait_add){
 				appendCompdateLeave(compdate.getVacation());
+				appendCompdateBack(compdate.getVacation());
 				setCompdateNormal(compdate);
 				continue;
 			}
 			if(compdate.getDatastate()==Datastate.exist && compdate.getWaitAction()==WaitAction.wait_remove){
 				removeCompdateLeave(compdate.getVacation());
+				removeCompdateBack(compdate.getVacation());
 				deleteCompdates.add(compdate);
 				continue;
 			}
@@ -102,8 +108,20 @@ public class CompdateServiceImpl implements CompdateService {
 			leave.setActurlDay(leave.getActurlDay().add(Dayitem.ITEM_VALUE));
 		}	
 	}
-
 	
+	private void appendCompdateBack(Dayitem dayitem){
+		List<Back> backs = backRepository.findByDayitemContain(dayitem.getDate(), dayitem.getAmpm());
+		for(Back back:backs){
+			back.setActurlDay(back.getActurlDay().subtract(Dayitem.ITEM_VALUE));
+		}
+	}
+
+	private void removeCompdateBack(Dayitem dayitem){
+		List<Back> backs = backRepository.findByDayitemContain(dayitem.getDate(), dayitem.getAmpm());
+		for(Back back:backs){
+			back.setActurlDay(back.getActurlDay().add(Dayitem.ITEM_VALUE));
+		}
+	}
 
 	@Override
 	@Transactional

@@ -1,4 +1,4 @@
-package cn.fyg.bp.domain.model.vacation.dayitem;
+package cn.fyg.bp.domain.model.vacation.common;
 
 import java.math.BigDecimal;
 import java.util.Date;

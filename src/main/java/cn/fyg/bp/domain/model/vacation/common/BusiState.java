@@ -1,15 +1,16 @@
-package cn.fyg.bp.domain.model.vacation.leave;
+package cn.fyg.bp.domain.model.vacation.common;
 
 import cn.fyg.bp.domain.model.shared.CommonEnum;
 
-public enum LeaveStatus implements CommonEnum {
+public enum BusiState implements CommonEnum {
+	new_("新建"),
 	execute("执行"),
 	finish("完成"),
 	voided("作废"); 
 	
 	private String name;
 
-	private LeaveStatus(String name) {
+	private BusiState(String name) {
 		this.name = name;
 	}
 

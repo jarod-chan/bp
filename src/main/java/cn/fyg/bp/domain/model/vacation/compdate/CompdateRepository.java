@@ -7,8 +7,8 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.Repository;
 import org.springframework.data.repository.query.Param;
 
-import cn.fyg.bp.domain.model.vacation.dayitem.AMPM;
-import cn.fyg.bp.domain.model.vacation.dayitem.Dayitem;
+import cn.fyg.bp.domain.model.vacation.common.AMPM;
+import cn.fyg.bp.domain.model.vacation.common.Dayitem;
 
 public interface CompdateRepository extends Repository<Compdate, Long> {
 	

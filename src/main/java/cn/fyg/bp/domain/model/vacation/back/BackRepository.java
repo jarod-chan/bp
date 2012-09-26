@@ -1,4 +1,4 @@
-package cn.fyg.bp.domain.model.vacation.leave;
+package cn.fyg.bp.domain.model.vacation.back;
 
 import java.util.Date;
 import java.util.List;
@@ -10,20 +10,20 @@ import org.springframework.data.repository.query.Param;
 import cn.fyg.bp.domain.model.vacation.common.AMPM;
 import cn.fyg.module.user.User;
 
-public interface LeaveRepository extends Repository<Leave, Long> {
+public interface BackRepository extends Repository<Back, Long>{
 	
-	Leave save(Leave leave);
+	Back findOne(Long id);
 	
-	Leave findOne(Long id);
-
-	@Query("select a.no from Leave a where a.id=" +
-			"(select max(b.id) from Leave b where b.user=:user )") 
+	Back save(Back back);
+	
+	@Query("select a.no from Back a where a.id=" +
+			"(select max(b.id) from Back b where b.user=:user )") 
 	String findMaxNoByUser(@Param("user")User user);
 	
-	@Query("from Leave a where " +
+	@Query("from Back a where " +
 			"((a.begDayitem.date=:date and a.begDayitem.ampm<=:ampm) or (a.begDayitem.date<:date)) " +
 			"and " +
 			"((a.endDayitem.date=:date and a.endDayitem.ampm>=:ampm) or (a.endDayitem.date>:date)) ")
-	List<Leave> findByDayitemContain(@Param("date")Date date,@Param("ampm")AMPM ampm);
+	List<Back> findByDayitemContain(@Param("date")Date date,@Param("ampm")AMPM ampm);
 
 }

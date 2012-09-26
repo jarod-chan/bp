@@ -11,7 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-import cn.fyg.bp.domain.model.vacation.dayitem.Dayitem;
+import cn.fyg.bp.domain.model.vacation.common.Dayitem;
 
 /**
  *公司假期，用于排除请假时间里的公共假期等

@@ -14,9 +14,9 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import cn.fyg.bp.application.CompdateService;
+import cn.fyg.bp.domain.model.vacation.common.AMPM;
+import cn.fyg.bp.domain.model.vacation.common.Dayitem;
 import cn.fyg.bp.domain.model.vacation.compdate.DayResult;
-import cn.fyg.bp.domain.model.vacation.dayitem.AMPM;
-import cn.fyg.bp.domain.model.vacation.dayitem.Dayitem;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("classpath:applicationContext.xml")
