@@ -21,7 +21,7 @@ import cn.fyg.bp.domain.model.vacation.compdate.WaitAction;
 import cn.fyg.bp.domain.model.vacation.leave.Leave;
 import cn.fyg.bp.domain.model.vacation.leave.LeaveRepository;
 
-@Service
+@Service("compdateService")
 public class CompdateServiceImpl implements CompdateService {
 	
 	@Autowired

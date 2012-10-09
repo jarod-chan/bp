@@ -8,7 +8,7 @@ import cn.fyg.bp.application.ContractService;
 import cn.fyg.bp.domain.model.contract.Contract;
 import cn.fyg.bp.domain.model.contract.ContractRepository;
 
-@Service
+@Service("contractService")
 public class ContractServiceImpl implements ContractService {
 	
 	@Autowired

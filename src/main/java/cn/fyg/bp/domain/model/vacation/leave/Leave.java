@@ -28,7 +28,7 @@ import cn.fyg.module.user.impl.domain.UserEntity;
 /**
  *请假业务
  */
-@Entity
+@Entity(name="leave_r")
 public class Leave {
 	
 	public static final String BUSINESS_CODE="HR-QJ";
@@ -67,6 +67,7 @@ public class Leave {
 	private BigDecimal acturlDay;//实际天数
 	
 	@Column
+	@Enumerated(EnumType.STRING)
 	private BusiState busiState;//状态
 	
 	@ManyToOne(targetEntity=UserEntity.class)

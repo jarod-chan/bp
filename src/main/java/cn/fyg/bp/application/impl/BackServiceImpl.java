@@ -10,7 +10,7 @@ import cn.fyg.bp.domain.model.vacation.back.BackFactory;
 import cn.fyg.bp.domain.model.vacation.back.BackRepository;
 import cn.fyg.module.user.User;
 
-@Service
+@Service("backService")
 public class BackServiceImpl implements BackService {
 	
 	@Autowired

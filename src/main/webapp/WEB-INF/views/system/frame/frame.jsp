@@ -78,6 +78,9 @@
 									<li class="fs" >
 										<a class="f_size" target="mainFrame" href="workflow/history" >流程历史</a>
 									</li>
+									<li class="fs" >
+										<a class="f_size" target="mainFrame" href="hr/leave" >开发</a>
+									</li>
 								</ul>
 								<div class="sepline"></div>
 							</div>

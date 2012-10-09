@@ -15,7 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
 import cn.fyg.bp.application.WorkflowService;
 import cn.fyg.bp.domain.model.process.ProcessFile;
 
-@Service
+@Service("workflowService")
 public class WorkflowServiceImpl implements WorkflowService {
 	
 	@Autowired

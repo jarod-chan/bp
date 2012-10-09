@@ -169,5 +169,23 @@
 	*line-height: 8px;
 	font-size: 12px;
 }
-	
+
+/*提交表单*/
+.submit_div{
+	margin-top: 5px;
+	margin-bottom: 5px;
+	margin-left: 8px;
+}
+.submit_div textarea{
+	border: 1px solid #718DA6;
+}
+
+.submit_div input.txt_date{
+	border: 1px solid #718DA6;
+}
+
+.submit_div select{
+	border: 1px solid #718DA6;
+}
+
 

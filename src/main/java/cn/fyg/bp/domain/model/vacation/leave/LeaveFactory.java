@@ -11,7 +11,7 @@ public class LeaveFactory {
 		Leave leave=new Leave();
 		String no=NoComputer.computeNo(Leave.BUSINESS_CODE, user, maxNo);
 		leave.setNo(no);
-		leave.setLeaveType(LeaveType.PERSONAL);
+		leave.setLeaveType(LeaveType.personal);
 		leave.setBusiState(BusiState.new_);
 		leave.setUser(user);
 		return leave;

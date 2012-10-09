@@ -31,7 +31,7 @@ public class LeaveTest {
 		user.setPassword("pwd111");
 		user.setEmail("user1@gmail.com");
 		user.setCellphone("13811112222");
-		userService.saveUser(user);
+		user=userService.saveUser(user);
 		
 		
 		for (int i = 1; i <= 10; i++) {

@@ -9,13 +9,16 @@ import cn.fyg.bp.domain.model.vacation.leave.Leave;
 import cn.fyg.bp.domain.model.vacation.leave.LeaveFactory;
 import cn.fyg.bp.domain.model.vacation.leave.LeaveRepository;
 import cn.fyg.module.user.User;
+import cn.fyg.module.user.UserService;
 
-@Service
+@Service("leaveService")
 public class LeaveServiceImpl implements LeaveService {
 	
 	
 	@Autowired
 	LeaveRepository leaveRepository;
+	@Autowired
+	UserService service;
 
 	@Override
 	public Leave create(User user) {

@@ -11,7 +11,7 @@ public class BackFactory {
 		Back back=new Back();
 		String no=NoComputer.computeNo(Back.BUSINESS_CODE, user, maxNo);
 		back.setNo(no);
-		back.setLeaveType(LeaveType.PERSONAL);
+		back.setLeaveType(LeaveType.personal);
 		back.setBusiState(BusiState.new_);
 		back.setUser(user);
 		return back;

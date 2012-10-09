@@ -26,6 +26,9 @@ import cn.fyg.bp.domain.model.vacation.leave.Leave;
 import cn.fyg.module.user.User;
 import cn.fyg.module.user.impl.domain.UserEntity;
 
+/**
+ * 销假业务
+ */
 @Entity
 public class Back {
 	
@@ -69,6 +72,7 @@ public class Back {
 	private BigDecimal acturlDay;//实际天数
 	
 	@Column
+	@Enumerated(EnumType.STRING)
 	private BusiState busiState;//状态
 	
 	@ManyToOne(targetEntity=UserEntity.class)

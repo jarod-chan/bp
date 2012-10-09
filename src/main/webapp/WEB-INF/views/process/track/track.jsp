@@ -9,7 +9,7 @@
 	<%@ include file="/common/setting.jsp" %>
 	<%@ include file="/common/meta.jsp" %>
 	<%@ include file="/common/include.jsp" %>	
-	<%@ include file="/common/easydialog.jsp" %>	
+	<%@ include file="/common/plu-easydialog.jsp" %>	
 	
     <script type="text/javascript">
 	    $(function() {

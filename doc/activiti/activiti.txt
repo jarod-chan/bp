@@ -8,3 +8,6 @@ Execution是ProcessInstance的父类，当前流程是子流程时，ProcessInst
     email.setSSL(true);
     email.setTLS(processEngineConfiguration.getMailServerUseTLS());
 可以使用ssl
+
+
+一个流程有两个结束节点，则需要所有结束节点都完成，流程才完成
