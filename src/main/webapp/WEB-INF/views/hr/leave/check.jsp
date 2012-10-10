@@ -16,7 +16,7 @@
     	$("[name='description']").attr({"maxlength":"500"}).iemaxlength();
 
 		$("#btn_back").click(function(){
-			window.open('${ctx}/process/start','_self');
+			window.open('${ctx}/process/task','_self');
 			return false;
 		});
 		$("#btn_commit").click(function(){
@@ -37,7 +37,7 @@
 	</c:if>
 	
 	<div class="txt_title">
-		请假 ------
+		请假 
 	</div>
 	
 	<div style="" class="toolbg toolbgline toolheight nowrap">
@@ -50,37 +50,23 @@
 		
 		
 	<div class="submit_div" >
-			<form action="${ctx}/hr/leave" method="post" >
-			<input type="hidden" name="id" value="${leave.id}"/>
-			<input type="hidden" name="no" value="${leave.no}"/>
+
 			
 			<table>
 				<tbody>
 					<tr>
 						<td colspan="2">
-						请假时间：<input type="text" class="txt_date" name="begDayitem.date" value="${leave.begDayitem.date}"/>&nbsp;<select name="begDayitem.ampm">
-							<c:forEach var="ampm" items="${ampms}">
-								<option value="${ampm}"  <c:if test="${ampm==leave.begDayitem.ampm}">selected="true"</c:if> >${ampm.name}</option>
-							</c:forEach>
-						</select>
-						&nbsp;-&gt;&nbsp;
-					    		<input type="text" class="txt_date" name="endDayitem.date" value="${leave.endDayitem.date}"/>&nbsp;<select name="endDayitem.ampm">
-							<c:forEach var="ampm" items="${ampms}">
-								<option value="${ampm}"  <c:if test="${ampm==leave.endDayitem.ampm}">selected="true"</c:if> >${ampm.name}</option>
-							</c:forEach>
-						</select>
+						请假时间：${leave.begDayitem.date}&nbsp;${leave.begDayitem.ampm.name}
+									&nbsp;-&gt;&nbsp;
+					    		 ${leave.endDayitem.date}&nbsp;${leave.endDayitem.ampm.name}
 						</td>
 					</tr>
 					<tr>
 						<td style="width: 300px;">
-							请假类别：<select name="leaveType">
-								<c:forEach var="leaveType" items="${leaveTypes}">
-									<option value="${leaveType}"  <c:if test="${leaveType==leave.leaveType}">selected="true"</c:if> >${leaveType.name}</option>
-								</c:forEach>
-							</select>
+							请假类别：${leave.leaveType.name}
 						</td>
 						<td style="width: 300px;">
-							<c:if test="${!empty leave.natureDay}">请假天数：共${leaveType.natureDay}天，时间${leaveType.acturlDay}天</c:if>
+							请假天数：共${leave.natureDay}天，实际${leave.acturlDay}天
 						</td>
 					</tr>
 					<tr>
@@ -94,17 +80,16 @@
 							请假人：${leave.user.realname}
 						</td>
 						<td style="width: 300px;">
-							<c:if test="${!empty leave.date}">
 							 申请时间：${leave.date}
-							</c:if>
 						</td>
 					</tr>
 				</tbody>
 			</table>
-				
-				
-
-				
+			
+			<form action="${ctx}/hr/leave" method="post" >
+				<input type="hidden" name="id" value="${leave.id}"/>
+				<input type="hidden" name="no" value="${leave.no}"/>
+			
 			</form>
 		</div>
 	

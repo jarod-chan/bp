@@ -50,7 +50,8 @@
 		
 		
 	<div class="submit_div" >
-			<form action="${ctx}/hr/leave" method="post" >
+			<form action="${ctx}/hr/leave/start" method="post" >
+			<input type="hidden" name="processDefinitionKey" value="${processDefinitionKey}"/>
 			<input type="hidden" name="id" value="${leave.id}"/>
 			<input type="hidden" name="no" value="${leave.no}"/>
 			

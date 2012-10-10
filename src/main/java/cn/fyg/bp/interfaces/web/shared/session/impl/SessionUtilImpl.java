@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import cn.fyg.bp.interfaces.web.shared.session.SessionUtil;
+import cn.fyg.module.user.User;
 import cn.fyg.module.user.UserService;
 
 /**
@@ -28,12 +29,7 @@ public class SessionUtilImpl implements SessionUtil {
 	@Override
 	public <T> T getValue(String key){
 		Object obj=httpSession.getAttribute(key);
-		//if(obj==null) return null;
-		if(obj==null&&key.equals("user")){
-			@SuppressWarnings("unchecked")
-			T returnVal = (T)userService.findUser("chenzw");
-			return returnVal;
-		}
+		if(obj==null) return null;
 		@SuppressWarnings("unchecked")
 		T returnVal = (T)obj;
 		return returnVal;
@@ -42,6 +38,16 @@ public class SessionUtilImpl implements SessionUtil {
 	@Override
 	public void invalidate(){
 		httpSession.invalidate();
+	}
+
+
+	@Override
+	public User getUser() {
+		User user=getValue("user");
+		if(user==null){
+			user=userService.findUser("chenzw");
+		}
+		return user;
 	}
 	
 }

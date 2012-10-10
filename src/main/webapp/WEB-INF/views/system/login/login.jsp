@@ -152,7 +152,7 @@
 					<div id="message"><c:if test="${not empty message}" ><div id="message">${message}</div></c:if></div>
 				</div>
 				<div>
-					用户:<input type="text"     id="username" name="username"  value="${loginBean.username}chen" /> 
+					用户:<input type="text"     id="username" name="username"  value="${loginBean.username}chenzw" /> 
 				</div>
 				<div>
 					密码:<input type="password" id="password" name="password" value="1"  />
