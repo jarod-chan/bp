@@ -180,6 +180,13 @@
 	border: 1px solid #718DA6;
 }
 
+.submit_div  div.mocktextarea{
+	border: 1px solid #718DA6;
+    font-family: "lucida Grande",Verdana;
+    padding: 3px;
+    width: 540px;
+}
+
 .submit_div input.txt_date{
 	border: 1px solid #718DA6;
 }

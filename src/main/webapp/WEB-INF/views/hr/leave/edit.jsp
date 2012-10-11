@@ -19,6 +19,11 @@
 			window.open('${ctx}/process/start','_self');
 			return false;
 		});
+		$("#btn_save").click(function(){
+			var actionFrom=$("form");
+			var oldAction=actionFrom.attr("action");
+			actionFrom.attr("action",oldAction+"/save").submit();
+		});
 		$("#btn_commit").click(function(){
 			var actionFrom=$("form");
 			var oldAction=actionFrom.attr("action");
@@ -28,6 +33,36 @@
 		
     });
     </script>
+    <style type="text/css">
+		.allopinion{
+			margin-top: 10px;
+			margin-left: 5px;
+			margin-bottom:10px;
+			width: 600px;
+			border-top:  1px solid #718DA6;
+		}
+		.allopinion .context{
+			border-bottom: 1px solid #718DA6;
+			border-left: 1px solid #718DA6;
+			border-right: 1px solid #718DA6;
+		}
+		
+		.allopinion .context .up .taskinfo{
+			float: left;
+			width: 50%;
+		}
+		
+		.allopinion .context .up .userinfo{
+			float: left;
+			width: 50%;
+		}
+		
+		
+		
+	    .allopinion .context .none { clear:both; font-size:0px; height:0px; line-height:0px;}	
+    </style>
+    
+
 </head>
 
 <body class="tbody">
@@ -50,10 +85,9 @@
 		
 		
 	<div class="submit_div" >
-			<form action="${ctx}/hr/leave/start" method="post" >
-			<input type="hidden" name="processDefinitionKey" value="${processDefinitionKey}"/>
+			<form action="${ctx}/hr/leave/edit" method="post" >
 			<input type="hidden" name="id" value="${leave.id}"/>
-			<input type="hidden" name="no" value="${leave.no}"/>
+			<input type="hidden" name="taskId" value="${task.id}"/>
 			
 			<table>
 				<tbody>
@@ -81,7 +115,7 @@
 							</select>
 						</td>
 						<td style="width: 300px;">
-							<c:if test="${!empty leave.natureDay}">请假天数：共${leaveType.natureDay}天，时间${leaveType.acturlDay}天</c:if>
+							
 						</td>
 					</tr>
 					<tr>
@@ -94,25 +128,45 @@
 						<td style="width: 300px;">
 							请假人：${leave.user.realname}
 						</td>
-						<td style="width: 300px;">
-							<c:if test="${!empty leave.date}">
+						<td style="width: 300px;">					
 							 申请时间：${leave.date}
-							</c:if>
 						</td>
 					</tr>
 				</tbody>
 			</table>
-				
-				
-
-				
 			</form>
+			
+			
+			
+			<div class="allopinion">
+				<c:forEach var="opinion" items="${opinionList}">				
+					<div class="context">
+						<div class="up">
+							<div class="taskinfo">${opinion.taskName}:${opinion.result.name}</div>
+							<div class="userinfo">审批人:${opinion.userName}</div>
+						</div>
+						<div class="description">
+							<c:choose>
+								<c:when test="${!empty opinion.description}">
+									审批意见:<br>${opinion.description}
+								</c:when>
+								<c:otherwise>
+									&nbsp;
+								</c:otherwise>
+							</c:choose>
+						</div>
+						<div class="none"></div>
+					</div>
+				</c:forEach>
+			</div>
+		
 		</div>
 	
 		<div style="" class="toolbg toolbgline toolheight nowrap">
 			<div class="nowrap left">	
 				<input type="button" value="«&nbsp;返回" class="qm_btn wd1 nowrap btn_goback" id="btn_back" >
 				<input type="button" class="btn_sepline">
+				<input type="button" value="保存" class="qm_btn wd1" id="btn_save">
 				<input type="button" value="提交" class="qm_btn wd1" id="btn_commit">				
 			</div>
 			<div class="right">

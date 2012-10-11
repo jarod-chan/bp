@@ -38,8 +38,8 @@ public class Opinion {
 	@Enumerated(EnumType.STRING)
 	private Result result;//是否同意
 	
-	@Column(length=256)
-	private String descirption;//审批意见
+	@Column(length=512)
+	private String description;//审批意见
 	
 	@Column(name="date_")
 	@Temporal(TemporalType.TIMESTAMP)
@@ -100,12 +100,12 @@ public class Opinion {
 		this.result = result;
 	}
 
-	public String getDescirption() {
-		return descirption;
+	public String getDescription() {
+		return description;
 	}
 
-	public void setDescirption(String descirption) {
-		this.descirption = descirption;
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 	public Date getDate() {

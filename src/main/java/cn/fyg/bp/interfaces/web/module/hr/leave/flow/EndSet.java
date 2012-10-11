@@ -11,11 +11,11 @@ import cn.fyg.bp.interfaces.web.shared.tool.FlowConstant;
 
 public class EndSet implements JavaDelegate {
 	
-	private Expression service;
+	private Expression leaveServiceExp;
 
 	@Override
 	public void execute(DelegateExecution execution) throws Exception {
-		LeaveService leaveService =(LeaveService) service.getValue(execution);
+		LeaveService leaveService =(LeaveService) leaveServiceExp.getValue(execution);
 		Long businessId = (Long) execution.getVariableLocal(FlowConstant.BUSINESS_ID);
 		Leave leave = leaveService.find(businessId);
 		leave.setBusiState(BusiState.finish);

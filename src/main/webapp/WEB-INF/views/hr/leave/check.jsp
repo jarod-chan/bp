@@ -12,7 +12,6 @@
 
     <script type="text/javascript">
     $(function() {
-    	$("[name='begDayitem.date'],[name='endDayitem.date']").simpleDatepicker({x:0,y:18});
     	$("[name='description']").attr({"maxlength":"500"}).iemaxlength();
 
 		$("#btn_back").click(function(){
@@ -28,9 +27,11 @@
 		
     });
     </script>
+    
+
 </head>
 
-<body class="frame_class">
+<body class="tbody">
 	<div class="container">
 	<c:if test="${not empty message}">
 		<div id="message" class="${message.level}">${message.message}</div>
@@ -72,25 +73,51 @@
 					<tr>
 						<td colspan="2">
 							请假原因：<br>
-							<textarea name="description" style="height: 180px;margin-top: 5px;">${leave.description}</textarea>
+							<div class="mocktextarea" style="height: 180px;margin-top: 5px;">${leave.description}</div>
 						</td>
 					</tr>
 					<tr>
-						<td style="width: 300px;">
+						<td >
 							请假人：${leave.user.realname}
 						</td>
-						<td style="width: 300px;">
+						<td >
 							 申请时间：${leave.date}
 						</td>
 					</tr>
 				</tbody>
 			</table>
 			
-			<form action="${ctx}/hr/leave" method="post" >
-				<input type="hidden" name="id" value="${leave.id}"/>
-				<input type="hidden" name="no" value="${leave.no}"/>
 			
+			<form action="${ctx}/hr/leave/check" method="post" >
+			<input type="hidden" name="businessId" value="${leave.id}"/>
+			<input type="hidden" name="taskId" value="${task.id}"/>
+			
+			
+			<table style="border:  1px dashed #718DA6;margin-top: 10px;margin-bottom: 10px;">
+				<tbody>
+					<tr>
+						<td style="width: 300px;">
+							${task.name}:<select name="result">
+								<c:forEach var="result" items="${resultList}">
+									<option value="${result}" >${result.name}</option>
+								</c:forEach>
+							</select>
+						</td>
+						<td style="width: 300px;">
+							 审批人: ${user.realname}
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2">
+							审批意见：<br>
+							<textarea name="description" style="height: 180px;margin-top: 5px;"></textarea>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+						
 			</form>
+			
 		</div>
 	
 		<div style="" class="toolbg toolbgline toolheight nowrap">

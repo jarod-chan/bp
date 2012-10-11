@@ -27,7 +27,7 @@ public class OpinionServiceTest {
 		Opinion opinion=new Opinion();
 		opinion.setBusinessCode(Leave.BUSINESS_CODE);
 		opinion.setBusinessId(1L);
-		opinion.setDescirption("ddfefd");
+		opinion.setDescription("ddfefd");
 		opinion.setResult(Result.agree);
 		opinion.setTaskKey("taskkey");
 		opinion.setTaskName("taskname");

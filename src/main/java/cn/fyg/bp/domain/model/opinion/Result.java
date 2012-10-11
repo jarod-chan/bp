@@ -25,12 +25,8 @@ public enum Result implements CommonEnum {
 		this.name=name;
 	}
 
-	public boolean isVal() {
+	public boolean isAgree() {
 		return val;
-	}
-
-	public void setVal(boolean val) {
-		this.val = val;
 	}
 	
 }

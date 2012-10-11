@@ -43,7 +43,7 @@ public class Leave {
 	@Enumerated(EnumType.STRING)
 	private LeaveType leaveType;//请假类别
 	
-	@Column(length=256)
+	@Column(length=512)
 	private String description;//说明
 	
 	@Embedded

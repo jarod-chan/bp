@@ -2,12 +2,15 @@ package cn.fyg.bp.interfaces.web.module.hr.leave;
 
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
 import org.activiti.engine.IdentityService;
 import org.activiti.engine.RuntimeService;
+import org.activiti.engine.TaskService;
+import org.activiti.engine.task.Task;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.ServletRequestDataBinder;
@@ -19,6 +22,9 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import cn.fyg.bp.application.CompdateService;
 import cn.fyg.bp.application.LeaveService;
+import cn.fyg.bp.application.OpinionService;
+import cn.fyg.bp.domain.model.opinion.Opinion;
+import cn.fyg.bp.domain.model.opinion.Result;
 import cn.fyg.bp.domain.model.vacation.common.AMPM;
 import cn.fyg.bp.domain.model.vacation.common.LeaveType;
 import cn.fyg.bp.domain.model.vacation.compdate.DayResult;
@@ -37,7 +43,8 @@ public class LeaveCtl {
 	private static final String PATH = "hr/leave/";
 	private interface Page {
 		String START = PATH + "start";
-		String CHECK =PATH + "check";
+		String CHECK = PATH + "check";
+		String EDIT = PATH + "edit";
 	}
 	
 	@Autowired
@@ -49,7 +56,11 @@ public class LeaveCtl {
 	@Autowired
 	RuntimeService runtimeService;
 	@Autowired
+	TaskService taskService;
+	@Autowired
 	SessionUtil sessionUtil;
+	@Autowired
+	OpinionService opinionService;
 	
 
 	@RequestMapping(value="start",method=RequestMethod.GET)
@@ -87,12 +98,74 @@ public class LeaveCtl {
 	}
 	
 	@RequestMapping(value="check/{businessId}",method=RequestMethod.GET)
-	public String toCheck(@PathVariable(value="businessId")Long businessId,Map<String,Object> map){
+	public String toCheck(@PathVariable(value="businessId")Long businessId,Map<String,Object> map,@RequestParam(value="taskId",required=false)String taskId){
 		Leave leave = leaveService.find(businessId);
+		map.put("leave", leave);
+		map.put("resultList", Result.values());
+		Task task = taskService.createTaskQuery().taskId(taskId).singleResult();
+		map.put("task", task);
+		return Page.CHECK;
+	}
+	
+	@RequestMapping(value="check/commit",method=RequestMethod.POST)
+	public String checkCommit(Opinion opinion,Map<String,Object> map,RedirectAttributes redirectAttributes,@RequestParam(value="taskId",required=false)String taskId){
+		User user=sessionUtil.getUser();
+		Task task = taskService.createTaskQuery().taskId(taskId).singleResult();
+		opinion.setBusinessCode(Leave.BUSINESS_CODE);
+		opinion.setTaskKey(task.getTaskDefinitionKey());
+		opinion.setTaskName(task.getName());
+		opinion.setUserKey(user.getKey());
+		opinion.setUserName(user.getRealname());
+		opinionService.append(opinion);
+		runtimeService.setVariableLocal(task.getExecutionId(), FlowVarName.IS_AGGREE,opinion.getResult().isAgree());
+		taskService.complete(task.getId());
+		redirectAttributes
+			.addFlashAttribute(Constant.MESSAGE_NAME, Message.create().info().message("任务完成！"));
+		return "redirect:/process/task";
+	}
+	
+	@RequestMapping(value="edit/{businessId}",method=RequestMethod.GET)
+	public String toEdit(@PathVariable(value="businessId")Long businessId,Map<String,Object> map,@RequestParam(value="taskId",required=false)String taskId){
+		Leave leave = leaveService.find(businessId);
+		Task task = taskService.createTaskQuery().taskId(taskId).singleResult();
+		List<Opinion> opinionList = opinionService.allOpinion(Leave.BUSINESS_CODE, businessId);
 		map.put("leave", leave);
 		map.put("leaveTypes", LeaveType.values());
 		map.put("ampms", AMPM.values());
-		return Page.CHECK;
+		map.put("task", task);
+		map.put("opinionList", opinionList);
+		return Page.EDIT;
+	}
+	
+	@RequestMapping(value="edit/save",method=RequestMethod.POST)
+	public String editSave(@RequestParam("id")Long id,HttpServletRequest request,RedirectAttributes redirectAttributes){
+		Leave leave = leaveService.find(id);
+		ServletRequestDataBinder binder = new ServletRequestDataBinder(leave);
+        binder.registerCustomEditor(Date.class,CustomEditorFactory.getCustomDateEditor());
+		binder.bind(request);
+		DayResult dayResult = compdateService.computerDay(leave.getBegDayitem(), leave.getEndDayitem());
+		leave.setNatureDay(dayResult.natureDay());
+		leave.setActurlDay(dayResult.acturlDay());
+		leaveService.save(leave);
+		redirectAttributes
+			.addFlashAttribute(Constant.MESSAGE_NAME, Message.create().info().message("保存成功！"));
+		return "redirect:/process/task";
+	}
+	
+	@RequestMapping(value="edit/commit",method=RequestMethod.POST)
+	public String editCommit(@RequestParam("id")Long id,HttpServletRequest request,RedirectAttributes redirectAttributes,@RequestParam(value="taskId",required=false)String taskId){
+		Leave leave = leaveService.find(id);
+		ServletRequestDataBinder binder = new ServletRequestDataBinder(leave);
+        binder.registerCustomEditor(Date.class,CustomEditorFactory.getCustomDateEditor());
+		binder.bind(request);
+		DayResult dayResult = compdateService.computerDay(leave.getBegDayitem(), leave.getEndDayitem());
+		leave.setNatureDay(dayResult.natureDay());
+		leave.setActurlDay(dayResult.acturlDay());
+		leaveService.save(leave);
+		taskService.complete(taskId);
+		redirectAttributes
+			.addFlashAttribute(Constant.MESSAGE_NAME, Message.create().info().message("任务完成！"));
+		return "redirect:/process/task";
 	}
 
 }
