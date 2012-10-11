@@ -57,8 +57,6 @@
 			width: 50%;
 		}
 		
-		
-		
 	    .allopinion .context .none { clear:both; font-size:0px; height:0px; line-height:0px;}	
     </style>
     

@@ -28,7 +28,7 @@ public class TaskCtl {
 	
 	@RequestMapping(value="",method=RequestMethod.GET)
 	public String toList(Map<String,Object> map){
-		User user = sessionUtil.getValue("user");
+		User user = sessionUtil.getUser();
 		List<ProcessTaskBean> processTasks = taskFacade.getProcessTasks(user.getKey());
 		map.put("processTasks", processTasks);
 		return Page.LIST;
