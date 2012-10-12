@@ -38,15 +38,16 @@
 	    	
 	    });
     </script>
-   
+    
+
 </head>
 <body class="tbody">
-	<c:if test="${not empty message}">
-		<div id="message" class="${message.level}">${message.message}</div>
-	</c:if>
+	<%@ include file="/common/message.jsp" %>
+
 	<div>
 		<div class="txt_title">
-			流程跟踪
+			流程跟踪	
+			<span class="f_size normal black" id="_ut"> (共<span id="_ut_c">${fn:length(processInstanceList)}</span>个)</span>
 		</div>
 	
 		<div style="" class="toolbg toolbgline toolheight nowrap">
@@ -82,14 +83,19 @@
 			</tbody>
 		</table>
 		
+		<c:if test="${empty processInstanceList}">		
+		<%@ include file="/common/emp-context.jsp" %>
+		</c:if>
+		
 		<div style="" class="toolbg toolbgline toolheight nowrap">
-			<div class="nowrap left">
-			</div>
+			<div class="nowrap left"></div>
 			<div class="right">
-				<!--页码 -->&nbsp;
+				<!--页码 -->
+				&nbsp;
 			</div>
 		</div>
-	</div>	
+		
+	</div>
 	
 	
 	

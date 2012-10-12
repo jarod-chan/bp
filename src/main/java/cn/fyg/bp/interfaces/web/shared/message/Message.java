@@ -8,21 +8,17 @@ public class Message {
 		return new Message();
 	}
 	
-	private enum Level{
-		INFO,ERROR;
-	}
-	
 	private Level level;
 	private String message;
 	
 	
 	public Message info() {
-		this.level = Level.INFO;
+		this.level = Level.info;
 		return this;
 	}
 	
 	public Message Error() {
-		this.level = Level.ERROR;
+		this.level = Level.error;
 		return this;
 	}
 	
@@ -31,8 +27,8 @@ public class Message {
 		return this;
 	}
 	
-	public String getLevel() {
-		return level.toString().toLowerCase();
+	public Level getLevel() {
+		return level;
 	}
 	
 	public String getMessage() {

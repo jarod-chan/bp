@@ -17,7 +17,7 @@ public class TaskCtl {
 	
 	private static final String PATH = "process/task/";
 	private interface Page {
-		String LIST = PATH + "list";
+		String TASK = PATH + "task";
 	}
 	
 	@Autowired
@@ -31,7 +31,7 @@ public class TaskCtl {
 		User user = sessionUtil.getUser();
 		List<ProcessTaskBean> processTasks = taskFacade.getProcessTasks(user.getKey());
 		map.put("processTasks", processTasks);
-		return Page.LIST;
+		return Page.TASK;
 	}
 
 }

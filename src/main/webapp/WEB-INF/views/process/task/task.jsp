@@ -40,9 +40,7 @@
 
 </head>
 <body class="tbody">
-	<c:if test="${not empty message}">
-		<div id="message" class="${message.level}">${message.message}</div>
-	</c:if>
+	<%@ include file="/common/message.jsp" %>
 
 	<div>
 		<div class="txt_title">
@@ -51,13 +49,6 @@
 	
 		<div style="" class="toolbg toolbgline toolheight nowrap">
 			<div class="nowrap left">
-				<!--
-				<input type="button" onclick="getTop().delMailML( '1', false, null, document);" value="删除" class=" wd1 btn" id="quick_del" name="del">
-				<input type="button" onclick="return getTop().checkPerDelML( '1', false, document)"	value="彻底删除" class="wd3 btn" id="quick_completelydel">
-				<input type="button" onclick="return FwMailML();" value="转发" class="mail_forward wd1 btn">
-				<input type="button" id="btn_reportSpam" onclick="getTop().reportSpamML(true,window)" value="举报" class="wd1 btn">
-				<input type="button" onclick="getTop().setFolderReaded(&quot;1&quot;,&quot;&quot;,&quot;&quot;,&quot;1&quot;,&quot;&quot;);" value="全部标为已读" class="wd4 btn" id="setAllReaded">
-				-->
 			</div>
 			<div class="right">
 				<!--页码 -->&nbsp;
@@ -67,31 +58,27 @@
 		<table class="O2" cellspacing="0" cellpadding="0" >
 			<thead>
 				<tr>
-					<th class="noborder">id</th>
-					<th class="title">流程Id</th>
-					<th class="title">任务Id</th>
-					<th class="title">任务名称</th>
-					<th class="title">表单</th>
-					<th class="title">业务id</th>
+					<th class="noborder">业务流程</th>
+					<th class="title">待办任务</th>
 					<th class="none">param</th>
 				</tr>
 			</thead>
 			<tbody>
 				<c:forEach var="processTask" items="${processTasks}">
 					<tr>
-						<td>${processTask.execution.id }</td>
-						<td>${processTask.execution.processInstanceId }</td>
-						<td>${processTask.task.id }</td>
-						<td>${processTask.task.name }</td>
-						<td>${processTask.formKey}</td>
-						<td>${processTask.businessId}</td>
+						<td>${processTask.processName}</td>
+						<td>${processTask.taskName}</td>
 						<td class="none">
-							<input type="hidden" class="param" value='{"taskId":"${processTask.task.id }","formKey":"${processTask.formKey}","businessId":"${processTask.businessId}"}'/>
+							<input type="hidden" class="param" value='{"taskId":"${processTask.taskId }","formKey":"${processTask.formKey}","businessId":"${processTask.businessId}"}'/>
 						</td>
 					</tr>
 				</c:forEach>
 			</tbody>
 		</table>
+		
+		<c:if test="${empty processTasks}">		
+		<%@ include file="/common/emp-context.jsp" %>
+		</c:if>
 
 		<div style="" class="toolbg toolbgline toolheight nowrap">
 			<div class="right">

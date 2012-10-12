@@ -15,3 +15,11 @@ ie下样式有很多问题，速度很慢   有没有办法解决，采用其他
 
 
 8 写测试时，测试结果依赖执行顺序？
+
+9 ie css  hack
+h1 { 
+	color:blue; 
+	#color:red; /* IE7 */ 
+	_color:green; /* IE6 */ 
+	*color:yellow; /* for all IE */ 
+} 

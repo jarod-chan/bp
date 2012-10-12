@@ -97,14 +97,14 @@
 				<tbody>
 					<tr>
 						<td style="width: 300px;">
-							${task.name}:<select name="result">
+							${task.name}：<select name="result">
 								<c:forEach var="result" items="${resultList}">
 									<option value="${result}" >${result.name}</option>
 								</c:forEach>
 							</select>
 						</td>
 						<td style="width: 300px;">
-							 审批人: ${user.realname}
+							 审批人： ${user.realname}
 						</td>
 					</tr>
 					<tr>

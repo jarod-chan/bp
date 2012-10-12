@@ -1,34 +1,17 @@
 package cn.fyg.bp.interfaces.web.module.process.task;
 
-import org.activiti.engine.runtime.Execution;
-import org.activiti.engine.task.Task;
 
 public class ProcessTaskBean {
 	
-	private Task task;
+	private String processName;//流程名称
 	
-	private Execution execution;
+	private String taskName;//任务名称
 	
-	private String formKey;
+	private String taskId;//任务id
 	
-	private String businessId;
-
-	public Task getTask() {
-		return task;
-	}
-
-	public void setTask(Task task) {
-		this.task = task;
-	}
-
-
-	public Execution getExecution() {
-		return execution;
-	}
-
-	public void setExecution(Execution execution) {
-		this.execution = execution;
-	}
+	private String formKey;//任务页面
+	
+	private String businessId;//业务id
 
 	public String getFormKey() {
 		return formKey;
@@ -44,6 +27,30 @@ public class ProcessTaskBean {
 
 	public void setBusinessId(String businessId) {
 		this.businessId = businessId;
+	}
+
+	public String getProcessName() {
+		return processName;
+	}
+
+	public void setProcessName(String processName) {
+		this.processName = processName;
+	}
+
+	public String getTaskName() {
+		return taskName;
+	}
+
+	public void setTaskName(String taskName) {
+		this.taskName = taskName;
+	}
+
+	public String getTaskId() {
+		return taskId;
+	}
+
+	public void setTaskId(String taskId) {
+		this.taskId = taskId;
 	}
 	
 	

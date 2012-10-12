@@ -30,9 +30,7 @@
 </head>
 
 <body class="tbody">
-	<c:if test="${not empty message}">
-		<div id="message" class="${message.level}">${message.message}</div>
-	</c:if>
+	<%@ include file="/common/message.jsp" %>
 
 	<div>
 		<div class="txt_title">
@@ -52,7 +50,7 @@
 				<tr>
 					<th class="noborder">流程名称</th>
 					<th class="title">版本号</th>
-					<th class="title">KEY</th>
+					<th class="title">流程编码</th>
 					<th class="title" style="width: 300px;">流程图</th>
 					<th class="title">操作</th>
 				</tr>
@@ -73,6 +71,10 @@
 				</c:forEach>
 			</tbody>
 		</table>
+		
+		<c:if test="${empty processDefinitionBeans}">		
+		<%@ include file="/common/emp-context.jsp" %>
+		</c:if>
 
 		<div style="" class="toolbg toolbgline toolheight nowrap">
 			<div class="right">
