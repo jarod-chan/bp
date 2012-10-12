@@ -10,6 +10,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 import cn.fyg.bp.domain.model.vacation.common.Dayitem;
 
@@ -17,6 +18,7 @@ import cn.fyg.bp.domain.model.vacation.common.Dayitem;
  *公司假期，用于排除请假时间里的公共假期等
  */
 @Entity
+@Table(name="hr_compdate")
 public class Compdate {
 	
 	@Id

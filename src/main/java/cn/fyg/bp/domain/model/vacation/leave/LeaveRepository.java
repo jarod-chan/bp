@@ -16,11 +16,11 @@ public interface LeaveRepository extends Repository<Leave, Long> {
 	
 	Leave findOne(Long id);
 
-	@Query("select a.no from leave_r a where a.id=" +
-			"(select max(b.id) from leave_r b where b.user=:user )") 
+	@Query("select a.no from Leave a where a.id=" +
+			"(select max(b.id) from Leave b where b.user=:user )") 
 	String findMaxNoByUser(@Param("user")User user);
 	
-	@Query("from leave_r a where " +
+	@Query("from Leave a where " +
 			"((a.begDayitem.date=:date and a.begDayitem.ampm<=:ampm) or (a.begDayitem.date<:date)) " +
 			"and " +
 			"((a.endDayitem.date=:date and a.endDayitem.ampm>=:ampm) or (a.endDayitem.date>:date)) ")

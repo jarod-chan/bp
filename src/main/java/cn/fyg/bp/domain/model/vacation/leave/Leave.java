@@ -16,6 +16,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.PrePersist;
+import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -28,7 +29,8 @@ import cn.fyg.module.user.impl.domain.UserEntity;
 /**
  *请假业务
  */
-@Entity(name="leave_r")
+@Entity
+@Table(name="hr_leave")
 public class Leave {
 	
 	public static final String BUSINESS_CODE="HR-QJ";
