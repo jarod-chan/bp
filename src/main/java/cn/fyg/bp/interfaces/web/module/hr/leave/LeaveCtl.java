@@ -26,6 +26,7 @@ import cn.fyg.bp.application.OpinionService;
 import cn.fyg.bp.domain.model.opinion.Opinion;
 import cn.fyg.bp.domain.model.opinion.Result;
 import cn.fyg.bp.domain.model.vacation.common.AMPM;
+import cn.fyg.bp.domain.model.vacation.common.BusiState;
 import cn.fyg.bp.domain.model.vacation.common.LeaveType;
 import cn.fyg.bp.domain.model.vacation.compdate.DayResult;
 import cn.fyg.bp.domain.model.vacation.leave.Leave;
@@ -84,16 +85,21 @@ public class LeaveCtl {
 		DayResult dayResult = compdateService.computerDay(leave.getBegDayitem(), leave.getEndDayitem());
 		leave.setNatureDay(dayResult.natureDay());
 		leave.setActurlDay(dayResult.acturlDay());
+		leave.setBusiState(BusiState.execute);
 		leaveService.save(leave);
 		
-		Map<String, Object> variableMap = new HashMap<String, Object>();
-		variableMap.put(FlowConstant.BUSINESS_ID, leave.getId());
-		variableMap.put(FlowConstant.APPLY_USER, user.getKey());
-		identityService.setAuthenticatedUserId(user.getKey());
-		runtimeService.startProcessInstanceByKey(processDefinitionKey, variableMap);
+		try{
+			Map<String, Object> variableMap = new HashMap<String, Object>();
+			variableMap.put(FlowConstant.BUSINESS_ID, leave.getId());
+			variableMap.put(FlowConstant.APPLY_USER, user.getKey());
+			identityService.setAuthenticatedUserId(user.getKey());
+			runtimeService.startProcessInstanceByKey(processDefinitionKey, variableMap);			
+		} finally {
+			identityService.setAuthenticatedUserId(null);
+		}
 		
 		redirectAttributes
-			.addFlashAttribute(Constant.MESSAGE_NAME, Message.create().info().message("请假成功！"));
+			.addFlashAttribute(Constant.MESSAGE_NAME, Message.create().info().message("请假流程启动！"));
 		return "redirect:/process/start";
 	}
 	
@@ -101,7 +107,7 @@ public class LeaveCtl {
 	public String toCheck(@PathVariable(value="businessId")Long businessId,Map<String,Object> map,@RequestParam(value="taskId",required=false)String taskId){
 		Leave leave = leaveService.find(businessId);
 		map.put("leave", leave);
-		map.put("resultList", Result.values());
+		map.put("resultList", Result.agreeItems());
 		Task task = taskService.createTaskQuery().taskId(taskId).singleResult();
 		map.put("task", task);
 		return Page.CHECK;
@@ -117,7 +123,7 @@ public class LeaveCtl {
 		opinion.setUserKey(user.getKey());
 		opinion.setUserName(user.getRealname());
 		opinionService.append(opinion);
-		runtimeService.setVariableLocal(task.getExecutionId(), FlowVarName.IS_AGGREE,opinion.getResult().isAgree());
+		runtimeService.setVariableLocal(task.getExecutionId(), LeaveVarName.IS_AGGREE,opinion.getResult().<Boolean>val());
 		taskService.complete(task.getId());
 		redirectAttributes
 			.addFlashAttribute(Constant.MESSAGE_NAME, Message.create().info().message("任务完成！"));

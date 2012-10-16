@@ -89,6 +89,19 @@ public class Back {
 	private void prePersist(){
 		this.date=new Date();
 	}
+	
+	/**
+	 * 判断当前销假单是否正常的销假单据
+	 * 正常：1销假单包含对应请假单 2销假日期在对应请假日期之内
+	 * @return
+	 */
+	public Boolean isNormalBack(){
+		if(this.leave!=null){
+			return this.begDayitem.getDate().compareTo(this.leave.getBegDayitem().getDate())>=0
+					&& this.endDayitem.getDate().compareTo(this.leave.getEndDayitem().getDate())<=0;
+		}
+		return Boolean.FALSE;
+	}
 
 	public Long getId() {
 		return id;

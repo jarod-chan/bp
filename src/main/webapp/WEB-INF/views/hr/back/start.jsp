@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>请假</title>
+	<title>销假</title>
 	<%@ include file="/common/setting.jsp" %>
 	<%@ include file="/common/meta.jsp" %>
 	<%@ include file="/common/include.jsp" %>	
@@ -35,11 +35,11 @@
 	<%@ include file="/common/message.jsp" %>
 	
 	<div class="txt_title">
-		请假 
+		销假
 	</div>
 	
 	<div style="" class="toolbg toolbgline toolheight nowrap">
-		<div class="nowrap left">NO：${leave.no}		
+		<div class="nowrap left">NO：${back.no}		
 		</div>
 		<div class="right">
 			<!--页码 -->&nbsp;
@@ -48,53 +48,53 @@
 		
 		
 	<div class="submit_div" >
-			<form action="${ctx}/hr/leave/start" method="post" >
+			<form action="${ctx}/hr/back/start" method="post" >
 			<input type="hidden" name="processDefinitionKey" value="${processDefinitionKey}"/>
-			<input type="hidden" name="id" value="${leave.id}"/>
-			<input type="hidden" name="no" value="${leave.no}"/>
+			<input type="hidden" name="id" value="${back.id}"/>
+			<input type="hidden" name="no" value="${back.no}"/>
 			
 			<table>
 				<tbody>
 					<tr>
 						<td colspan="2">
-						请假时间：<input type="text" class="txt_date" name="begDayitem.date" value="${leave.begDayitem.date}"/>&nbsp;<select name="begDayitem.ampm">
+						销假时间：<input type="text" class="txt_date" name="begDayitem.date" value="${back.begDayitem.date}"/>&nbsp;<select name="begDayitem.ampm">
 							<c:forEach var="ampm" items="${ampms}">
-								<option value="${ampm}"  <c:if test="${ampm==leave.begDayitem.ampm}">selected="true"</c:if> >${ampm.name}</option>
+								<option value="${ampm}"  <c:if test="${ampm==back.begDayitem.ampm}">selected="true"</c:if> >${ampm.name}</option>
 							</c:forEach>
 						</select>
 						&nbsp;-&gt;&nbsp;
-					    		<input type="text" class="txt_date" name="endDayitem.date" value="${leave.endDayitem.date}"/>&nbsp;<select name="endDayitem.ampm">
+					    		<input type="text" class="txt_date" name="endDayitem.date" value="${back.endDayitem.date}"/>&nbsp;<select name="endDayitem.ampm">
 							<c:forEach var="ampm" items="${ampms}">
-								<option value="${ampm}"  <c:if test="${ampm==leave.endDayitem.ampm}">selected="true"</c:if> >${ampm.name}</option>
+								<option value="${ampm}"  <c:if test="${ampm==back.endDayitem.ampm}">selected="true"</c:if> >${ampm.name}</option>
 							</c:forEach>
 						</select>
 						</td>
 					</tr>
 					<tr>
 						<td style="width: 300px;">
-							请假类别：<select name="leaveType">
+							销假类别：<select name="leaveType">
 								<c:forEach var="leaveType" items="${leaveTypes}">
-									<option value="${leaveType}"  <c:if test="${leaveType==leave.leaveType}">selected="true"</c:if> >${leaveType.name}</option>
+									<option value="${leaveType}"  <c:if test="${leaveType==back.leaveType}">selected="true"</c:if> >${leaveType.name}</option>
 								</c:forEach>
 							</select>
 						</td>
 						<td style="width: 300px;">
-							<c:if test="${!empty leave.natureDay}">请假天数：共${leaveType.natureDay}天，时间${leaveType.acturlDay}天</c:if>
+							<c:if test="${!empty leave.natureDay}">请假天数：共${back.natureDay}天，时间${back.acturlDay}天</c:if>
 						</td>
 					</tr>
 					<tr>
 						<td colspan="2">
-							请假说明：<br>
-							<textarea name="description" style="height: 180px;margin-top: 5px;">${leave.description}</textarea>
+							销假说明：<br>
+							<textarea name="description" style="height: 180px;margin-top: 5px;">${back.description}</textarea>
 						</td>
 					</tr>
 					<tr>
 						<td style="width: 300px;">
-							请假人：${leave.user.realname}
+							请假人：${back.user.realname}
 						</td>
 						<td style="width: 300px;">
 							<c:if test="${!empty leave.date}">
-							 申请时间：${leave.date}
+							 申请时间：${back.date}
 							</c:if>
 						</td>
 					</tr>

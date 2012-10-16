@@ -1,16 +1,24 @@
 package cn.fyg.bp.domain.model.opinion;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import cn.fyg.bp.domain.model.shared.CommonEnum;
 
 public enum Result implements CommonEnum {
-	agree("同意",true),
-	disagree("不同意",false);
-
+	agree("同意",Boolean.TRUE),
+	disagree("不同意",Boolean.FALSE),
+	
+	pass("通过",Boolean.TRUE),
+	nopass("不通过",Boolean.FALSE),
+	
+	checked("确认","");
+	
 	private String name;
 	
-	private boolean val;//布尔值，表示是否审核是否通过，用来控制流程分支
+	private Object val;//流程值，用来控制流程分支
 	
-	private Result(String name,boolean val){
+	private<T> Result(String name,T val){
 		this.name=name;
 		this.val=val;
 	}
@@ -25,8 +33,23 @@ public enum Result implements CommonEnum {
 		this.name=name;
 	}
 
-	public boolean isAgree() {
-		return val;
+	@SuppressWarnings("unchecked")
+	public<T> T val() {
+		return (T) val;
+	}
+	
+	public static List<Result> agreeItems(){
+		List<Result> items=new ArrayList<Result>();
+		items.add(Result.agree);
+		items.add(Result.disagree);
+		return items;
+	}
+	
+	public static List<Result> passItems(){
+		List<Result> items=new ArrayList<Result>();
+		items.add(Result.pass);
+		items.add(Result.nopass);
+		return items;
 	}
 	
 }

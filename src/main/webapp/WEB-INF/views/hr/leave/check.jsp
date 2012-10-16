@@ -33,9 +33,7 @@
 
 <body class="tbody">
 	<div class="container">
-	<c:if test="${not empty message}">
-		<div id="message" class="${message.level}">${message.message}</div>
-	</c:if>
+	<%@ include file="/common/message.jsp" %>
 	
 	<div class="txt_title">
 		请假 
@@ -72,7 +70,7 @@
 					</tr>
 					<tr>
 						<td colspan="2">
-							请假原因：<br>
+							请假说明：<br>
 							<div class="mocktextarea" style="height: 180px;margin-top: 5px;">${leave.description}</div>
 						</td>
 					</tr>

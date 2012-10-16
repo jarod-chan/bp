@@ -8,7 +8,7 @@ import cn.fyg.bp.application.LeaveService;
 import cn.fyg.bp.application.OpinionService;
 import cn.fyg.bp.domain.model.vacation.common.BusiState;
 import cn.fyg.bp.domain.model.vacation.leave.Leave;
-import cn.fyg.bp.interfaces.web.module.hr.leave.FlowVarName;
+import cn.fyg.bp.interfaces.web.module.hr.leave.LeaveVarName;
 import cn.fyg.bp.interfaces.web.shared.tool.FlowConstant;
 
 public class BeginSet implements JavaDelegate {
@@ -27,7 +27,7 @@ public class BeginSet implements JavaDelegate {
 		leaveService.save(leave);
 		
 		opinionService.clear(Leave.BUSINESS_CODE, businessId);
-		execution.setVariableLocal(FlowVarName.ACTURL_DAY, leave.getActurlDay());
+		execution.setVariableLocal(LeaveVarName.ACTURL_DAY, leave.getActurlDay());
 	}
 
 }

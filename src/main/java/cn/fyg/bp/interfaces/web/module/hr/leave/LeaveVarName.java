@@ -1,6 +1,6 @@
 package cn.fyg.bp.interfaces.web.module.hr.leave;
 
-public interface FlowVarName {
+public interface LeaveVarName {
 	
 	/**
 	 *是否同意

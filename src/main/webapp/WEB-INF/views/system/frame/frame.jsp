@@ -81,6 +81,9 @@
 									<li class="fs" >
 										<a class="f_size" target="mainFrame" href="hr/leave/start" >开发</a>
 									</li>
+									<li class="fs" >
+										<a class="f_size" target="mainFrame" href="hr/back/start" >开发</a>
+									</li>
 								</ul>
 								<div class="sepline"></div>
 							</div>
