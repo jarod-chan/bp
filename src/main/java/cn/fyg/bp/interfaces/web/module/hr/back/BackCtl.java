@@ -167,5 +167,36 @@ public class BackCtl {
 		map.put("opinionList", opinionList);
 		return Page.EDIT;
 	}
+	
+	@RequestMapping(value="edit/save",method=RequestMethod.POST)
+	public String editSave(@RequestParam("id")Long id,HttpServletRequest request,RedirectAttributes redirectAttributes){
+		Back back = backService.find(id);
+		ServletRequestDataBinder binder = new ServletRequestDataBinder(back);
+        binder.registerCustomEditor(Date.class,CustomEditorFactory.getCustomDateEditor());
+		binder.bind(request);
+		DayResult dayResult = compdateService.computerDay(back.getBegDayitem(), back.getEndDayitem());
+		back.setNatureDay(dayResult.natureDay());
+		back.setActurlDay(dayResult.acturlDay());
+		backService.save(back);
+		redirectAttributes
+			.addFlashAttribute(Constant.MESSAGE_NAME, Message.create().info().message("保存成功！"));
+		return "redirect:/process/task";
+	}
+	
+	@RequestMapping(value="edit/commit",method=RequestMethod.POST)
+	public String editCommit(@RequestParam("id")Long id,HttpServletRequest request,RedirectAttributes redirectAttributes,@RequestParam(value="taskId",required=false)String taskId){
+		Back back = backService.find(id);
+		ServletRequestDataBinder binder = new ServletRequestDataBinder(back);
+        binder.registerCustomEditor(Date.class,CustomEditorFactory.getCustomDateEditor());
+		binder.bind(request);
+		DayResult dayResult = compdateService.computerDay(back.getBegDayitem(), back.getEndDayitem());
+		back.setNatureDay(dayResult.natureDay());
+		back.setActurlDay(dayResult.acturlDay());
+		backService.save(back);
+		taskService.complete(taskId);
+		redirectAttributes
+			.addFlashAttribute(Constant.MESSAGE_NAME, Message.create().info().message("任务完成！"));
+		return "redirect:/process/task";
+	}
 
 }
