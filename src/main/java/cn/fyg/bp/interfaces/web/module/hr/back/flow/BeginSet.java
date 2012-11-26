@@ -7,6 +7,7 @@ import org.activiti.engine.delegate.JavaDelegate;
 import cn.fyg.bp.application.BackService;
 import cn.fyg.bp.application.OpinionService;
 import cn.fyg.bp.domain.model.vacation.back.Back;
+import cn.fyg.bp.interfaces.web.module.hr.CommonVarName;
 import cn.fyg.bp.interfaces.web.module.hr.back.BackVarName;
 import cn.fyg.bp.interfaces.web.shared.tool.FlowConstant;
 
@@ -26,6 +27,8 @@ public class BeginSet implements JavaDelegate {
 		opinionService.clear(Back.BUSINESS_CODE, businessId);
 		execution.setVariableLocal(BackVarName.ACTURL_DAY, back.getActurlDay());
 		execution.setVariableLocal(BackVarName.IS_NORMAL_BACK, back.isNormalBack());
+		//把单据号作为一个流程变量，在发送邮件时方便取值
+		execution.setVariable(CommonVarName.BUSINESS_NO, back.getNo());
 	}
 
 }

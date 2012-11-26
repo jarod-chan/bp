@@ -31,6 +31,7 @@ public class ProduceBack implements JavaDelegate {
 		Long leaveId=(Long)execution.getVariable(BackVarName.LEAVE_ID);
 		Leave leave = leaveService.find(leaveId);
 		Back back=backService.create(leave.getUser());
+		back.setLeave(leave);
 		back.setBegDayitem(leave.getBegDayitem());
 		back.setEndDayitem(leave.getEndDayitem());
 		back.setBusiState(BusiState.execute);

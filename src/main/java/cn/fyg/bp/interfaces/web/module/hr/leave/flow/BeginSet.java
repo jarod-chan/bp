@@ -8,6 +8,7 @@ import cn.fyg.bp.application.LeaveService;
 import cn.fyg.bp.application.OpinionService;
 import cn.fyg.bp.domain.model.vacation.common.BusiState;
 import cn.fyg.bp.domain.model.vacation.leave.Leave;
+import cn.fyg.bp.interfaces.web.module.hr.CommonVarName;
 import cn.fyg.bp.interfaces.web.module.hr.leave.LeaveVarName;
 import cn.fyg.bp.interfaces.web.shared.tool.FlowConstant;
 
@@ -28,6 +29,8 @@ public class BeginSet implements JavaDelegate {
 		
 		opinionService.clear(Leave.BUSINESS_CODE, businessId);
 		execution.setVariableLocal(LeaveVarName.ACTURL_DAY, leave.getActurlDay());
+		//把单据号作为一个流程变量，在发送邮件时方便取值
+		execution.setVariable(CommonVarName.BUSINESS_NO, leave.getNo());
 	}
 
 }
